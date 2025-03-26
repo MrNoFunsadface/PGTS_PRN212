@@ -28,6 +28,23 @@ namespace DAL.Configs
                 .WithOne(m => m.Pregnancy)
                 .HasForeignKey(m => m.PregnancyId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasData(
+                new Pregnancy
+                {
+                    Id = 1,
+                    ConceptionDate = new DateTime(2021, 1, 1),
+                    DueDate = new DateTime(2021, 9, 1),
+                    UserId = 2,
+                },
+                new Pregnancy
+                {
+                    Id = 2,
+                    ConceptionDate = new DateTime(2021, 2, 1),
+                    DueDate = new DateTime(2021, 10, 1),
+                    UserId = 3,
+                }
+            );
         }
     }
 }

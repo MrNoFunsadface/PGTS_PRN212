@@ -26,6 +26,33 @@ namespace DAL.Configs
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasData(
+                new User
+                {
+                    Id = 1,
+                    Name = "Admin",
+                    Email = "admin@example.com",
+                    Password = "Admin@123",
+                    isAdmin = true,
+                },
+                new User
+                {
+                    Id = 2,
+                    Name = "Elizabeth Taylor",
+                    Email = "user1@example.org",
+                    Password = "User1@123",
+                    isAdmin = false,
+                },
+                new User
+                {
+                    Id = 3,
+                    Name = "Victoria Beckham",
+                    Email = "user2@example.org",
+                    Password = "User2@123",
+                    isAdmin = false,
+                }
+            );
         }
     }
 }
