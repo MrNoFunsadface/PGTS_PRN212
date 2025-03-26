@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DAL.Entities
 {
     public class Pregnancy
@@ -13,5 +7,7 @@ namespace DAL.Entities
         public DateTime DueDate { get; set; }
         public int UserId { get; set; }
         public User User { get; set; } = null!;
+        public ICollection<FetusData> FetusDatas { get; set; } = [];
+        public ICollection<Milestone> Milestones { get; set; } = [];
     }
 }

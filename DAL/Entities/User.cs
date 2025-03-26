@@ -1,11 +1,3 @@
-using Microsoft.Identity.Client.Extensions.Msal;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace DAL.Entities
 {
     public class User
@@ -14,8 +6,8 @@ namespace DAL.Entities
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Role { get; set; } = null!;
+        public bool isAdmin { get; set; }
+
         public ICollection<Pregnancy> Pregnancies { get; set; } = [];
     }
 }
