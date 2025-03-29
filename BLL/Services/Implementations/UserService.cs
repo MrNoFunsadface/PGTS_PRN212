@@ -231,5 +231,56 @@ namespace BLL.Services.Implementations
                 Message = "User updated."
             };
         }
+
+        public ResponseDTO DeleteUser(int id, bool softDelete)
+        {
+            var user = _userRepo.GetSingle(u => u.Id == id);
+
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"User with ID:{id} not found"
+                };
+            }
+
+            if (softDelete)
+            {
+                user.isActive = false;
+                var update = _userRepo.Update(user);
+                if (!update)
+                {
+                    return new ResponseDTO
+                    {
+                        Success = false,
+                        Message = "Delete failed."
+                    };
+                }
+
+                return new ResponseDTO
+                {
+                    Success = true,
+                    Message = "Delete successful."
+                };
+            }
+
+            var delete = _userRepo.Delete(user);
+
+            if (!delete)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Delete failed."
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Delete successful"
+            };
+        }
     }
 }

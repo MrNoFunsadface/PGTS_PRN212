@@ -11,5 +11,6 @@ namespace BLL.Services.Interfaces
         public ResponseDTO ForgotPassword(string email, UserResetPasswordDTO userResetPasswordDTO);
         public ResponseDTO ChangePassword(int id, UserResetPasswordDTO userResetPasswordDTO);
         public ResponseDTO UpdateUser(int id, UserProfileDTO userProfileDTO);
+        public ResponseDTO DeleteUser(int id, bool softDelete);
     }
 }

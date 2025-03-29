@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows.SecurityWindows"
         mc:Ignorable="d"
-        Title="DeleteAccountWindow" Height="450" Width="800">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="Account Deletion" Height="200" Width="400">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Are you sure you want to delete your account? You will no longer be able to log in." TextAlignment="Center" Margin="0,0,0,20" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Yes" Width="100" Height="30" Click="btnYes_Click" Margin="0,0,10,0"/>
+                <Button Content="No" Width="100" Height="30" Click="btnNo_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
