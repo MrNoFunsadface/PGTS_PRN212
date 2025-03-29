@@ -1,9 +1,10 @@
 ﻿using DAL.Entities;
 using DAL.Repos.Interfaces;
+using BLL.Services.Interfaces;
 
-namespace BLL.Services
+namespace BLL.Services.Implementations
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IUserRepo _userRepo;
 
@@ -12,7 +13,7 @@ namespace BLL.Services
             _userRepo = userRepo;
         }
 
-        public IEnumerable<User> GetAll() =>_userRepo.GetAll();
+        public IEnumerable<User> GetAll() => _userRepo.GetAll();
         public User GetById(int id) => _userRepo.GetById(id);
         public void Add(User user) => _userRepo.Add(user);
         public void Update(User user) => _userRepo.Update(user);

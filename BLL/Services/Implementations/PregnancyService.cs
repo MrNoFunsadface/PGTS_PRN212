@@ -1,9 +1,10 @@
 ﻿using DAL.Entities;
 using DAL.Repos.Interfaces;
+using BLL.Services.Interfaces;
 
-namespace BLL.Services
+namespace BLL.Services.Implementations
 {
-    public class PregnancyService
+    public class PregnancyService : IPregnancyService
     {
         private readonly IPregnancyRepo _pregnancyRepo;
 

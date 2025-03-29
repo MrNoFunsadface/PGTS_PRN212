@@ -1,9 +1,10 @@
 ﻿using DAL.Entities;
 using DAL.Repos.Interfaces;
+using BLL.Services.Interfaces;
 
-namespace BLL.Services
+namespace BLL.Services.Implementations
 {
-    public class FetusDataService
+    public class FetusDataService : IFetusDataService
     {
         private readonly IFetusDataRepo _fetusDataRepo;
 
