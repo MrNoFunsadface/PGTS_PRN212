@@ -60,4 +60,17 @@ namespace BLL.DTOs
         [Compare("Password", ErrorMessage = "The confirm password does not match password")]
         public string ConfirmPassword { get; set; } = null!;
     }
+
+    public class UserProfileDTO
+    {
+        [Required(ErrorMessage = "Name is required")]
+        public string? Name { get; set; }
+
+        [Required(ErrorMessage = "Email is required"), EmailAddress]
+        public string Email { get; set; } = null!;
+
+        [Required(ErrorMessage = "Phone number is required")]
+        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone number must start with 0 and be exactly 10 digits long")]
+        public string? Phone { get; set; }
+    }
 }

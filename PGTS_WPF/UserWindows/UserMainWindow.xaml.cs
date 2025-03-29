@@ -37,7 +37,8 @@ namespace PGTS_WPF.UserWindows
 
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowDialog<UserProfileWindow>();
+            LoadCustomerData();
         }
 
         private void btnSecurity_Click(object sender, RoutedEventArgs e)

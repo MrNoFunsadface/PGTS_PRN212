@@ -35,9 +35,9 @@ namespace PGTS_WPF.AuthenticationWindows
         {
             var name = txtName.Text;
             var email = txtEmail.Text;
-            var phone = txtPhone.Text;
             var password = txtPassword.Password;
             var confirmPassword = txtConfirmPassword.Password;
+            var phone = txtPhone.Text;
 
             var user = new UserRequestDTO
             {
