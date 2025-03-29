@@ -1,27 +1,162 @@
-﻿using DAL.Entities;
-using DAL.Repos.Interfaces;
+﻿using AutoMapper;
+using BLL.DTOs;
 using BLL.Services.Interfaces;
+using DAL.Entities;
+using DAL.Repo;
 
 namespace BLL.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepo _userRepo;
+        private readonly IGenericRepo<User> _userRepo;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepo userRepo)
+        public UserService(IGenericRepo<User> userRepo, IMapper mapper)
         {
             _userRepo = userRepo;
+            _mapper = mapper;
         }
 
-        public IEnumerable<User> GetAll() => _userRepo.GetAll();
-        public User GetById(int id) => _userRepo.GetById(id);
-        public void Add(User user) => _userRepo.Add(user);
-        public void Update(User user) => _userRepo.Update(user);
-        public void Delete(int id) => _userRepo.Delete(id);
-
-        public User Login(string email, string password)
+        public ResponseDTO Register(UserRequestDTO userRequestDTO)
         {
-            return _userRepo.GetAll().FirstOrDefault(u => u.Email == email && u.Password == password);
+            var user = _mapper.Map<User>(userRequestDTO);
+            var valid = checkValidPassWord(user.Password);
+            if (!valid.Success)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = valid.Message
+                };
+            }
+
+            var existingUser = _userRepo.GetSingle(u => u.Email == user.Email);
+            if (existingUser != null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"Email: {user.Email} already exists."
+                };
+            }
+
+            var result = _userRepo.Create(user);
+            if (!result)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Register failed."
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Register successful."
+            };
+        }
+
+        public ResponseDTO<UserResponseDTO> Login(UserLoginDTO userLoginDTO)
+        {
+            var existingUser = _userRepo.GetSingle(u => u.Email == userLoginDTO.Email && u.Password == userLoginDTO.Password);
+            if (existingUser == null)
+            {
+                return new ResponseDTO<UserResponseDTO>
+                {
+                    Success = false,
+                    Message = "Wrong Email or Passwword"
+                };
+            }
+
+            var userResponse = _mapper.Map<UserResponseDTO>(existingUser);
+            return new ResponseDTO<UserResponseDTO>
+            {
+                Success = true,
+                Message = "Logged in.",
+                Data = userResponse
+            };
+        }
+
+        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search)
+        {
+            var users = _userRepo.Get().AsEnumerable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                int userId;
+                if (int.TryParse(search, out userId))
+                {
+                    users = users.Where(u => u.Id == userId);
+                }
+                else
+                {
+                    var filter = search.ToLower();
+                    users = users.Where(u =>
+                        u.Name.ToLower().Contains(filter) ||
+                        u.Email.ToLower().Contains(filter)).ToList();
+                }
+            }
+
+            return new ResponseDTO<IEnumerable<UserResponseDTO>>
+            {
+                Success = true,
+                Message = "List of users.",
+                Data = users.Select(u => new UserResponseDTO
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    Password = u.Password,
+                    isAdmin = u.isAdmin
+                })
+            };
+        }
+
+        public ResponseDTO<UserResponseDTO> GetById(int id)
+        {
+            var user = _userRepo.GetSingle(u => u.Id == id);
+            if (user == null)
+            {
+                return new ResponseDTO<UserResponseDTO>
+                {
+                    Success = false,
+                    Message = "user not found."
+                };
+            }
+
+            var userResponse = _mapper.Map<UserResponseDTO>(user);
+            return new ResponseDTO<UserResponseDTO>
+            {
+                Success = true,
+                Message = "ID matched",
+                Data = userResponse
+            };
+        }
+
+        private ResponseDTO checkValidPassWord(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Password cannot be empty"
+                };
+            }
+
+            if (password.Count() < 4 || password.Count() > 16)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Password's length has to be from 4 to 16 characters"
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true
+            };
         }
     }
 }

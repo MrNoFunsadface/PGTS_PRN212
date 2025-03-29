@@ -1,11 +1,19 @@
-﻿using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using BLL.Services.Interfaces;
+﻿using AutoMapper;
+using BLL;
 using BLL.Services.Implementations;
-using DAL.Repos.Interfaces;
-using DAL.Repos.Implementations;
+using BLL.Services.Interfaces;
 using DAL.Data;
+using DAL.Entities;
+using DAL.Repo;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using PGTS_WPF.AuthenticationWindows;
+using PGTS_WPF.Helper;
+using PGTS_WPF.Helpers;
+using PGTS_WPF.UserWindows;
+using System.IO;
+using System.Windows;
 
 namespace PGTS_WPF
 {
@@ -14,24 +22,60 @@ namespace PGTS_WPF
     /// </summary>
     public partial class App : Application
     {
-        public static ServiceProvider ServiceProvider { get; private set; }
+        private IServiceProvider _serviceProvider;
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
+
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
-            ServiceProvider = serviceCollection.BuildServiceProvider();
+            _serviceProvider = serviceCollection.BuildServiceProvider();
 
-            base.OnStartup(e);
+            var windowManager = _serviceProvider.GetRequiredService<IWindowManager>();
+            windowManager.ShowWindow<LoginWindow>();
         }
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+            // Add configuration
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+            services.AddSingleton<IConfiguration>(configuration);
 
-            services.AddSingleton<IUserRepo, UserRepo>();
+            // Register DbContext
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            // Register AutoMapper
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperProfile());
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            // Register Repositories
+            services.AddSingleton<IGenericRepo<User>, GenericRepo<User>>();
+            services.AddSingleton<IGenericRepo<Pregnancy>, GenericRepo<Pregnancy>>();
+            services.AddSingleton<IGenericRepo<FetusData>, GenericRepo<FetusData>>();
+            services.AddSingleton<IGenericRepo<Milestone>, GenericRepo<Milestone>>();
+
+            // Register Services
             services.AddSingleton<IUserService, UserService>();
+            //services.AddSingleton<IPregnancyService, PregnancyService>();
+            //services.AddSingleton<IFetusDataService, FetusDataService>();
+            //services.AddSingleton<IMilestoneService, MilestoneService>();
+
+            // Register Helpers
+            services.AddSingleton<UserSession>();
+            services.AddSingleton<IWindowManager, WindowManager>();
+
+            // Register Windows
+            services.AddTransient<LoginWindow>();
+            services.AddTransient<UserMainWindow>();
         }
     }
 }

@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Entities;
+﻿using BLL.DTOs;
 
 namespace BLL.Services.Interfaces
 {
     public interface IUserService
     {
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        void Add(User user);
-        void Update(User user);
-        void Delete(int id);
-        User Login(string email, string password);
+        public ResponseDTO Register(UserRequestDTO userRequestDTO);
+        public ResponseDTO<UserResponseDTO> Login(UserLoginDTO userLoginDTO);
+        public ResponseDTO<UserResponseDTO> GetById(int id);
+        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search);
     }
 }

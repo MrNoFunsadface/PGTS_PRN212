@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PGTS_WPF.User
+namespace PGTS_WPF.AuthenticationWindows
 {
     /// <summary>
-    /// Interaction logic for PregnancyAnalyticsWindow.xaml
+    /// Interaction logic for RegisterWindow.xaml
     /// </summary>
-    public partial class PregnancyAnalyticsWindow : Window
+    public partial class RegisterWindow : Window
     {
-        public PregnancyAnalyticsWindow()
+        public RegisterWindow()
         {
             InitializeComponent();
         }
