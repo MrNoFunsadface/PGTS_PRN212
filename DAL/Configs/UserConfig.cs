@@ -34,23 +34,29 @@ namespace DAL.Configs
                     Name = "Admin",
                     Email = "admin@example.com",
                     Password = "Admin@123",
+                    Phone = "0905123456",
                     isAdmin = true,
+                    isActive = true,
                 },
                 new User
                 {
                     Id = 2,
                     Name = "Elizabeth Taylor",
-                    Email = "user1@example.org",
+                    Email = "user1@example.com",
                     Password = "User1@123",
+                    Phone = "0905123457",
                     isAdmin = false,
+                    isActive = true,
                 },
                 new User
                 {
                     Id = 3,
                     Name = "Victoria Beckham",
-                    Email = "user2@example.org",
+                    Email = "user2@example.com",
                     Password = "User2@123",
+                    Phone = "0905123458",
                     isAdmin = false,
+                    isActive = false,
                 }
             );
         }
