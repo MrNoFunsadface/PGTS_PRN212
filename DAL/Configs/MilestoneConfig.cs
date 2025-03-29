@@ -24,21 +24,21 @@ namespace DAL.Configs
                     Id = 1,
                     PregnancyId = 1,
                     Descriptions = "First Trimester",
-                    Date = new DateTime(2021, 1, 1)
+                    Date = new DateOnly(2021, 1, 1)
                 },
                 new Milestone
                 {
                     Id = 2,
                     PregnancyId = 1,
                     Descriptions = "Second Trimester",
-                    Date = new DateTime(2021, 4, 1)
+                    Date = new DateOnly(2021, 4, 1)
                 },
                 new Milestone
                 {
                     Id = 3,
                     PregnancyId = 1,
                     Descriptions = "Third Trimester",
-                    Date = new DateTime(2021, 7, 1)
+                    Date = new DateOnly(2021, 7, 1)
                 }
             );
         }

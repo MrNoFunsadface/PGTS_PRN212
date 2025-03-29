@@ -33,7 +33,7 @@ namespace DAL.Configs
                     Weight = 3.5m,
                     Height = 50.0m,
                     HeadCircumference = 30.0m,
-                    Date = new DateTime(2021, 1, 1)
+                    Date = new DateOnly(2021, 1, 1)
                 },
                 new FetusData
                 {
@@ -42,7 +42,7 @@ namespace DAL.Configs
                     Weight = 4.0m,
                     Height = 55.0m,
                     HeadCircumference = 32.0m,
-                    Date = new DateTime(2021, 2, 1)
+                    Date = new DateOnly(2021, 2, 1)
                 },
                 new FetusData
                 {
@@ -51,7 +51,7 @@ namespace DAL.Configs
                     Weight = 3.0m,
                     Height = 45.0m,
                     HeadCircumference = 28.0m,
-                    Date = new DateTime(2021, 1, 1)
+                    Date = new DateOnly(2021, 1, 1)
                 },
                 new FetusData
                 {
@@ -60,7 +60,7 @@ namespace DAL.Configs
                     Weight = 3.5m,
                     Height = 50.0m,
                     HeadCircumference = 30.0m,
-                    Date = new DateTime(2021, 2, 1)
+                    Date = new DateOnly(2021, 2, 1)
                 }
             );
         }

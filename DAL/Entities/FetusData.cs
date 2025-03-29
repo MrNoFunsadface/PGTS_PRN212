@@ -7,7 +7,7 @@ namespace DAL.Entities
         public decimal Weight { get; set; }
         public decimal Height { get; set; }
         public decimal HeadCircumference { get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public Pregnancy Pregnancy { get; set; } = null!;
     }
 }

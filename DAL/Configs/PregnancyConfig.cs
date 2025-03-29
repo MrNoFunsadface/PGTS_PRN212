@@ -33,15 +33,15 @@ namespace DAL.Configs
                 new Pregnancy
                 {
                     Id = 1,
-                    ConceptionDate = new DateTime(2021, 1, 1),
-                    DueDate = new DateTime(2021, 9, 1),
+                    ConceptionDate = new DateOnly(2021, 1, 1),
+                    DueDate = new DateOnly(2021, 9, 1),
                     UserId = 2,
                 },
                 new Pregnancy
                 {
                     Id = 2,
-                    ConceptionDate = new DateTime(2021, 2, 1),
-                    DueDate = new DateTime(2021, 10, 1),
+                    ConceptionDate = new DateOnly(2021, 2, 1),
+                    DueDate = new DateOnly(2021, 10, 1),
                     UserId = 3,
                 }
             );

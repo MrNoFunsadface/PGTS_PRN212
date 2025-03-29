@@ -1,4 +1,5 @@
-﻿using BLL.Services.Interfaces;
+﻿using BLL.Services.Implementations;
+using BLL.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +14,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PGTS_WPF.AdminWindows.UsersManagementWindows
+namespace PGTS_WPF.UserWindows.PregnancyWindows
 {
     /// <summary>
-    /// Interaction logic for DeleteUserWindow.xaml
+    /// Interaction logic for DeletePregnancyWindow.xaml
     /// </summary>
-    public partial class DeleteUserWindow : Window
+    public partial class DeletePregnancyWindow : Window
     {
-        private readonly int _userId;
-        private readonly IUserService _userService;
+        private readonly int _pregnancyId;
+        private readonly IPregnancyService _pregnancyService;
 
-        public DeleteUserWindow(int userId, IUserService userService)
+        public DeletePregnancyWindow(int pregnancyId, IPregnancyService pregnancyService)
         {
             InitializeComponent();
-            _userId = userId;
-            _userService = userService;
+            _pregnancyId = pregnancyId;
+            _pregnancyService = pregnancyService;
         }
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
-            var response = _userService.DeleteUser(_userId, false);
+            var response = _pregnancyService.Delete(_pregnancyId);
             if (response.Success)
             {
 

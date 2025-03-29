@@ -3,6 +3,7 @@ using BLL.DTOs;
 using BLL.Services.Interfaces;
 using DAL.Entities;
 using DAL.Repo;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,32 +23,68 @@ namespace BLL.Services.Implementations
             _mapper = mapper;
         }
 
-        public ResponseDTO<PregnancyResponseDTO> Add(PregnancyRequestDTO pregnancyRequestDto)
+        public ResponseDTO Add(PregnancyRequestDTO pregnancyRequestDto)
         {
             var pregnancy = _mapper.Map<Pregnancy>(pregnancyRequestDto);
+            var valid = checkValidDate(pregnancy.ConceptionDate, pregnancy.DueDate);
+            if (!valid.Success)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = valid.Message
+                };
+            }
 
             var result = _pregnancyRepo.Create(pregnancy);
-
             if (!result)
             {
-                return new ResponseDTO<PregnancyResponseDTO>
+                return new ResponseDTO
                 {
                     Success = false,
                     Message = "Add pregnancy failed."
                 };
             }
 
-            return new ResponseDTO<PregnancyResponseDTO>
+            return new ResponseDTO
             {
                 Success = true,
-                Message = "Pregnancy added.",
-                Data = new PregnancyResponseDTO
+                Message = "Pregnancy added."
+            };
+        }
+
+        private ResponseDTO checkValidDate(DateOnly conceptionDate, DateOnly? dueDate)
+        {
+            if (conceptionDate.ToString().IsNullOrEmpty())
+            {
+                return new ResponseDTO
                 {
-                    Id = pregnancy.Id,
-                    ConceptionDate = pregnancy.ConceptionDate,
-                    DueDate = pregnancy.DueDate,
-                    UserId = pregnancy.UserId
-                }
+                    Success = false,
+                    Message = "Conception date cannot be empty"
+                };
+            }
+
+            if (conceptionDate > dueDate)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Due date has to be after conception date"
+                };
+            }
+
+            if (conceptionDate > DateOnly.FromDateTime(DateTime.Now))
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Conception date cannot be in the future"
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true
             };
         }
 
@@ -95,9 +132,11 @@ namespace BLL.Services.Implementations
                 else
                 {
                     var filter = search.ToLower();
+
                     pregnancies = pregnancies.Where(p =>
-                        p.ConceptionDate.ToString().ToLower().Contains(filter) ||
-                        p.DueDate.ToString().ToLower().Contains(filter));
+                        p.ConceptionDate.ToString("yyyy-MM-dd").ToLower().Contains(filter) ||
+                        (p.DueDate.HasValue && p.DueDate.Value.ToString("yyyy-MM-dd").ToLower().Contains(filter))
+                    );
                 }
             }
 
@@ -109,7 +148,7 @@ namespace BLL.Services.Implementations
                 {
                     Id = p.Id,
                     ConceptionDate = p.ConceptionDate,
-                    DueDate = p.DueDate,
+                    DueDate = p.DueDate.GetValueOrDefault(),
                     UserId = p.UserId
                 })
             };
@@ -148,7 +187,17 @@ namespace BLL.Services.Implementations
                 };
             }
 
+
             var update = _mapper.Map(pregnancyRequestDto, pregnancy);
+            var valid = checkValidDate(pregnancy.ConceptionDate, pregnancy.DueDate);
+            if (!valid.Success)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = valid.Message
+                };
+            }
             var result = _pregnancyRepo.Update(update);
             if (!result)
             {
@@ -160,7 +209,7 @@ namespace BLL.Services.Implementations
             }
 
             return new ResponseDTO
-            {
+            {   
                 Success = true,
                 Message = "Pregnancy updated."
             };

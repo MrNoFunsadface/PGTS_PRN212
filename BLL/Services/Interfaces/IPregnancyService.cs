@@ -9,7 +9,7 @@ namespace BLL.Services.Interfaces
 {
     public interface IPregnancyService
     {
-        ResponseDTO<PregnancyResponseDTO> Add(PregnancyRequestDTO pregnancyRequestDto);
+        ResponseDTO Add(PregnancyRequestDTO pregnancyRequestDto);
         ResponseDTO<IEnumerable<PregnancyResponseDTO>> GetAll(string? search);
         ResponseDTO<PregnancyResponseDTO> GetById(int pregnancyId);
         ResponseDTO Update(int id, PregnancyRequestDTO pregnancyRequestDto);

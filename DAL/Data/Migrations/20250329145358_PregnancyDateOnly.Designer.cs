@@ -4,6 +4,7 @@ using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250329145358_PregnancyDateOnly")]
+    partial class PregnancyDateOnly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +33,8 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("HeadCircumference")
                         .HasColumnType("decimal(18,2)");
@@ -55,7 +58,7 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateOnly(2021, 1, 1),
+                            Date = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HeadCircumference = 30.0m,
                             Height = 50.0m,
                             PregnancyId = 1,
@@ -64,7 +67,7 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateOnly(2021, 2, 1),
+                            Date = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HeadCircumference = 32.0m,
                             Height = 55.0m,
                             PregnancyId = 1,
@@ -73,7 +76,7 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateOnly(2021, 1, 1),
+                            Date = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HeadCircumference = 28.0m,
                             Height = 45.0m,
                             PregnancyId = 2,
@@ -82,7 +85,7 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 4,
-                            Date = new DateOnly(2021, 2, 1),
+                            Date = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HeadCircumference = 30.0m,
                             Height = 50.0m,
                             PregnancyId = 2,
@@ -98,8 +101,8 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Descriptions")
                         .IsRequired()
@@ -118,21 +121,21 @@ namespace DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateOnly(2021, 1, 1),
+                            Date = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descriptions = "First Trimester",
                             PregnancyId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateOnly(2021, 4, 1),
+                            Date = new DateTime(2021, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descriptions = "Second Trimester",
                             PregnancyId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateOnly(2021, 7, 1),
+                            Date = new DateTime(2021, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Descriptions = "Third Trimester",
                             PregnancyId = 1
                         });

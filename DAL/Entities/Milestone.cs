@@ -5,7 +5,7 @@ namespace DAL.Entities
         public int Id { get; set; }
         public int PregnancyId { get; set; }
         public string Descriptions { get; set; } = string.Empty;
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public Pregnancy Pregnancy { get; set; } = null!;
     }
 }

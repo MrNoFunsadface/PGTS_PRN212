@@ -15,41 +15,41 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PGTS_WPF.AdminWindows.UsersManagementWindows
+namespace PGTS_WPF.UserWindows.PregnancyWindows
 {
     /// <summary>
-    /// Interaction logic for UsersManagementWindow.xaml
+    /// Interaction logic for PregnancyMainWindow.xaml
     /// </summary>
-    public partial class UsersManagementWindow : Window
+    public partial class PregnancyMainWindow : Window
     {
-        private readonly IUserService _userService;
+        private readonly IPregnancyService _pregnancyService;
         private readonly IWindowManager _windowManager;
-        private List<UserResponseDTO>? _userList;
+        private List<PregnancyResponseDTO> _pregnanciesList;
 
-        public UsersManagementWindow(IUserService userService, IWindowManager windowManager)
+        public PregnancyMainWindow(IPregnancyService pregnancyService, IWindowManager windowManager)
         {
             InitializeComponent();
-            _userService = userService;
+            _pregnancyService = pregnancyService;
             _windowManager = windowManager;
-            LoadUsers();
+            LoadPregnancies();
         }
 
-        private void LoadUsers(string search = null)
+        private void LoadPregnancies(string search = null)
         {
-            _userList = _userService.GetAll(search).Data.ToList();
-            UsersDataGrid.ItemsSource = _userList;
+            _pregnanciesList = _pregnancyService.GetAll(search).Data.ToList();
+            PregnanciesDataGrid.ItemsSource = _pregnanciesList;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             var searchText = txtSearch.Text;
-            LoadUsers(searchText);
+            LoadPregnancies(searchText);
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            _windowManager.ShowDialog<CreateUserWindow>();
-            LoadUsers(txtSearch.Text);
+            _windowManager.ShowDialog<CreatePregnancyWindow>();
+            LoadPregnancies(txtSearch.Text);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -57,9 +57,9 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
             var button = sender as Button;
             if (button != null)
             {
-                var userId = button.Tag;
-                _windowManager.ShowDialog<EditUserWindow>(userId);
-                LoadUsers(txtSearch.Text);
+                var pregnancyId = button.Tag;
+                _windowManager.ShowDialog<EditPregnancyWindow>(pregnancyId);
+                LoadPregnancies(txtSearch.Text);
             }
         }
 
@@ -68,9 +68,9 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
             var button = sender as Button;
             if (button != null)
             {
-                var userId = button.Tag;
-                _windowManager.ShowDialog<DeleteUserWindow>(userId);
-                LoadUsers(txtSearch.Text);
+                var pregnancyId = button.Tag;
+                _windowManager.ShowDialog<DeletePregnancyWindow>(pregnancyId);
+                LoadPregnancies(txtSearch.Text);
             }
         }
     }
