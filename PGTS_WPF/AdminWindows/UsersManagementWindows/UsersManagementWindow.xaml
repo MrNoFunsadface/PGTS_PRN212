@@ -28,6 +28,7 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="100"/>
                 <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="100"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding isActive}" Width="100"/>
+                <DataGridTextColumn Header="Admin" Binding="{Binding isAdmin}" Width="100"/>
                 <DataGridTemplateColumn Header="Tools" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
