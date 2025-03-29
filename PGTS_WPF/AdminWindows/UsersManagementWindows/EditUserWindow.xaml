@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.AdminWindows.UsersManagementWindows"
         mc:Ignorable="d"
-        Title="EditUserWindow" Height="450" Width="800">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="Edit User" Height="600" Width="400">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Name" Margin="0,0,0,10"/>
+            <TextBox Name="txtName" Margin="0,0,0,10"/>
+            <TextBlock Text="Email" Margin="0,0,0,10"/>
+            <TextBox Name="txtEmail" Margin="0,0,0,10" />
+            <TextBlock Text="Password" Margin="0,0,0,10"/>
+            <PasswordBox Name="txtPassword" Margin="0,0,0,10" />
+            <TextBlock Text="Confirm Password" Margin="0,0,0,10"/>
+            <PasswordBox Name="txtConfirmPassword" Margin="0,0,0,10"/>
+            <TextBlock Text="Phone" Margin="0,0,0,10"/>
+            <TextBox Name="txtPhone" Margin="0,0,0,10"/>
+            <TextBlock Text="Status" Margin="0,0,0,10"/>
+            <ComboBox Name="cboStatus" Margin="0,0,0,10">
+                <ComboBoxItem Content="Active"/>
+                <ComboBoxItem Content="Inactive"/>
+            </ComboBox>
+            <TextBlock Text="Admin" Margin="0,0,0,10"/>
+            <ComboBox Name="cboAdmin" Margin="0,0,0,10">
+                <ComboBoxItem Content="Yes"/>
+                <ComboBoxItem Content="No"/>
+            </ComboBox>
+            <Button Content="Saave" Click="btnSave_Click" Margin="0,0,0,10"/>
+        </StackPanel>
     </Grid>
 </Window>

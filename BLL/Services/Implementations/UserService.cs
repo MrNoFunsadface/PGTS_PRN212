@@ -209,7 +209,7 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO UpdateUser(int id, UserProfileDTO userProfileDTO)
+        public ResponseDTO UpdateProfile(int id, UserProfileDTO userProfileDTO)
         {
             var user = _userRepo.GetSingle(u => u.Id == id);
             if (user == null)
@@ -222,6 +222,29 @@ namespace BLL.Services.Implementations
             }
 
             var updateUser = _mapper.Map(userProfileDTO, user);
+
+            _userRepo.Update(updateUser);
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "User updated."
+            };
+        }
+
+        public ResponseDTO UpdateUser(int id, UserRequestDTO userRequestDTO)
+        {
+            var user = _userRepo.GetSingle(u => u.Id == id);
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"User with ID: {id} not found"
+                };
+            }
+
+            var updateUser = _mapper.Map(userRequestDTO, user);
 
             _userRepo.Update(updateUser);
 

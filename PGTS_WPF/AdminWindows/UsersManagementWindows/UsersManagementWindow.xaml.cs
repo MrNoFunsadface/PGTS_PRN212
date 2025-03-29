@@ -53,7 +53,13 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            var button = sender as Button;
+            if (button != null)
+            {
+                var userId = button.Tag;
+                _windowManager.ShowDialog<EditUserWindow>(userId);
+                LoadUsers(txtSearch.Text);
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

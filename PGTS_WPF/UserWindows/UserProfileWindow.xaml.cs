@@ -64,7 +64,7 @@ namespace PGTS_WPF.UserWindows
                 return;
             }
 
-            var response = _userService.UpdateUser(userId, updatedUser);
+            var response = _userService.UpdateProfile(userId, updatedUser);
             if (response.Success)
             {
                 MessageBox.Show(response.Message, "Updated Successfully", MessageBoxButton.OK, MessageBoxImage.Information);
