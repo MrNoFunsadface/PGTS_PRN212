@@ -22,10 +22,10 @@ namespace PGTS_WPF.UserWindows
             _userService = userService;
             _windowManager = windowManager;
             _userSession = userSession;
-            LoadCustomerData();
+            LoadUserData();
         }
 
-        private void LoadCustomerData()
+        private void LoadUserData()
         {
             var user = _userService.GetById(_userSession.UserResponse.Id).Data;
 
@@ -40,7 +40,7 @@ namespace PGTS_WPF.UserWindows
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowDialog<UserProfileWindow>();
-            LoadCustomerData();
+            LoadUserData();
         }
 
         private void btnSecurity_Click(object sender, RoutedEventArgs e)

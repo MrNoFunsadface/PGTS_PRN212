@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.AdminWindows"
         mc:Ignorable="d"
-        Title="AdminMainWindow" Height="450" Width="800">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="Admin Dashboard" Height="300" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Admin Dashboard" 
+               FontSize="24" 
+               FontWeight="Bold" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center"
+               Margin="294,0,0,0" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0,20,10,20">
+                <TextBlock x:Name="WelcomeTextBlock" FontSize="16" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Users" Width="200" Height="50" Margin="0,10" Click="btnUsers_Click"/>
+            <Button Content="Requests" Width="200" Height="50" Margin="0,10" Click="btnRequests_Click"/>
+        </StackPanel>
+        <Button Content="Log Out" Click="btnLogout_Click" Margin="33,19,650,21" RenderTransformOrigin="0.662,1.022"/>
     </Grid>
 </Window>
