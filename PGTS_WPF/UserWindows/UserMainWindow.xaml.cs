@@ -1,4 +1,5 @@
 ﻿using BLL.Services.Interfaces;
+using PGTS_WPF.AuthenticationWindows;
 using PGTS_WPF.Helper;
 using PGTS_WPF.Helpers;
 using System.Windows;
@@ -63,7 +64,8 @@ namespace PGTS_WPF.UserWindows
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowWindow<LoginWindow>();
+            Close();
         }
     }
 }
