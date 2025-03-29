@@ -64,7 +64,13 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            var button = sender as Button;
+            if (button != null)
+            {
+                var userId = button.Tag;
+                _windowManager.ShowDialog<DeleteUserWindow>(userId);
+                LoadUsers(txtSearch.Text);
+            }
         }
     }
 }
