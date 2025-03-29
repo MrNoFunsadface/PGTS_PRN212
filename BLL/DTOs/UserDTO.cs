@@ -14,12 +14,12 @@ namespace BLL.DTOs
         [StringLength(16, MinimumLength = 4, ErrorMessage = "Your new password must be between 4 and 16 characters")]
         public string? Password { get; set; }
 
-        [Required(ErrorMessage = "ConfirmedPassword is required")]
-        [Compare("Password", ErrorMessage = "The confirmed password does not match password")]
-        public string ConfirmedPassword { get; set; } = null!;
+        [Required(ErrorMessage = "ConfirmPassword is required")]
+        [Compare("Password", ErrorMessage = "The confirm password does not match password")]
+        public string ConfirmPassword { get; set; } = null!;
 
-        [Required(ErrorMessage = "Phone is required")]
-        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone must start with 0 and be exactly 10 digits long")]
+        [Required(ErrorMessage = "Phone number is required")]
+        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone number must start with 0 and be exactly 10 digits long")]
         public string? Phone { get; set; }
 
         public bool isAdmin { get; set; }
