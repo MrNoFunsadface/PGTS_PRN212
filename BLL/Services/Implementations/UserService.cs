@@ -69,6 +69,15 @@ namespace BLL.Services.Implementations
                 };
             }
 
+            if (!existingUser.isActive)
+            {
+                return new ResponseDTO<UserResponseDTO>
+                {
+                    Success = false,
+                    Message = "Your account has been disabled."
+                };
+            }
+
             var userResponse = _mapper.Map<UserResponseDTO>(existingUser);
             return new ResponseDTO<UserResponseDTO>
             {
@@ -86,7 +95,7 @@ namespace BLL.Services.Implementations
                 int userId;
                 if (int.TryParse(search, out userId))
                 {
-                    users = users.Where(u => u.Id == userId);
+                    users = users.Where(u => u.Id == userId || u.Phone.ToLower().Contains(search));
                 }
                 else
                 {
@@ -107,7 +116,9 @@ namespace BLL.Services.Implementations
                     Name = u.Name,
                     Email = u.Email,
                     Password = u.Password,
-                    isAdmin = u.isAdmin
+                    Phone = u.Phone,
+                    isAdmin = u.isAdmin,
+                    isActive = u.isActive
                 })
             };
         }

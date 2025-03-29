@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows"
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
         Title="User Dashboard" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>

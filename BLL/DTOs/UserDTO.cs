@@ -18,7 +18,12 @@ namespace BLL.DTOs
         [Compare("Password", ErrorMessage = "The confirmed password does not match password")]
         public string ConfirmedPassword { get; set; } = null!;
 
+        [Required(ErrorMessage = "Phone is required")]
+        [RegularExpression(@"^0\d{9}$", ErrorMessage = "Phone must start with 0 and be exactly 10 digits long")]
+        public string? Phone { get; set; }
+
         public bool isAdmin { get; set; }
+        public bool isActive { get; set; }
     }
 
     public class UserResponseDTO
@@ -30,8 +35,10 @@ namespace BLL.DTOs
         public string Email { get; set; } = null!;
 
         public string? Password { get; set; }
+        public string? Phone { get; set; }
 
         public bool isAdmin { get; set; }
+        public bool isActive { get; set; }
     }
 
     public class UserLoginDTO
