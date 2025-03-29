@@ -48,7 +48,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowWindow<CreateUserWindow>();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

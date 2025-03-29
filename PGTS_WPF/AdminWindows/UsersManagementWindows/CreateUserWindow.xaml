@@ -1,0 +1,36 @@
+﻿<Window x:Class="PGTS_WPF.AdminWindows.UsersManagementWindows.CreateUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PGTS_WPF.AdminWindows.UsersManagementWindows"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="CreateUserWindow" Height="600" Width="400">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Name" Margin="0,0,0,10"/>
+            <TextBox Name="txtName" Margin="0,0,0,10"/>
+            <TextBlock Text="Email" Margin="0,0,0,10"/>
+            <TextBox Name="txtEmail" Margin="0,0,0,10" />
+            <TextBlock Text="Password" Margin="0,0,0,10"/>
+            <PasswordBox Name="txtPassword" Margin="0,0,0,10" />
+            <TextBlock Text="Confirm Password" Margin="0,0,0,10"/>
+            <PasswordBox Name="txtConfirmPassword" Margin="0,0,0,10"/>
+            <TextBlock Text="Phone" Margin="0,0,0,10"/>
+            <TextBox Name="txtPhone" Margin="0,0,0,10"/>
+            <TextBlock Text="Status" Margin="0,0,0,10"/>
+            <ComboBox Name="cboStatus" Margin="0,0,0,10">
+                <ComboBoxItem Content="Active"/>
+                <ComboBoxItem Content="Inactive"/>
+            </ComboBox>
+            <TextBlock Text="Admin" Margin="0,0,0,10"/>
+            <ComboBox Name="cboAdmin" Margin="0,0,0,10">
+                <ComboBoxItem Content="Yes"/>
+                <ComboBoxItem Content="No"/>
+            </ComboBox>
+            <Button Content="Create" Click="btnCreate_Click" Margin="0,0,0,10"/>
+        </StackPanel>
+    </Grid>
+</Window>
