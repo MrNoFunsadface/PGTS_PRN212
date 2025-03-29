@@ -14,5 +14,6 @@ namespace BLL.Services.Interfaces
         void Add(User user);
         void Update(User user);
         void Delete(int id);
+        User Login(string email, string password);
     }
 }

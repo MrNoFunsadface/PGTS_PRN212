@@ -18,5 +18,10 @@ namespace BLL.Services.Implementations
         public void Add(User user) => _userRepo.Add(user);
         public void Update(User user) => _userRepo.Update(user);
         public void Delete(int id) => _userRepo.Delete(id);
+
+        public User Login(string email, string password)
+        {
+            return _userRepo.GetAll().FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
     }
 }
