@@ -17,7 +17,7 @@ namespace PGTS_WPF.AccountManagement
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             var email = txtEmail.Text;
-            var password = txtPass.Text;
+            var password = txtPassword.Password;
 
             var user = _userService.Login(email, password);
             if (user != null)
@@ -33,9 +33,17 @@ namespace PGTS_WPF.AccountManagement
             }
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            Registration register = new Registration();
+            register.Show();
             Close();
         }
+
+        private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
     }
 }
