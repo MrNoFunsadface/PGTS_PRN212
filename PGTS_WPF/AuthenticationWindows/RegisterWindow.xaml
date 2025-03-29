@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
-        Title="Register" Height="500" Width="800">
+        Title="Register" Height="450" Width="500">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <TextBlock Text="Name" Margin="0,0,0,10"/>

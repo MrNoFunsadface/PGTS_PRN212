@@ -49,4 +49,15 @@ namespace BLL.DTOs
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; } = null!;
     }
+
+    public class UserResetPasswordDTO
+    {
+        [Required(ErrorMessage = "Password is required")]
+        [StringLength(16, MinimumLength = 4, ErrorMessage = "Your new password must be between 4 and 16 characters")]
+        public string? Password { get; set; }
+
+        [Required(ErrorMessage = "ConfirmPassword is required")]
+        [Compare("Password", ErrorMessage = "The confirm password does not match password")]
+        public string ConfirmPassword { get; set; } = null!;
+    }
 }

@@ -11,6 +11,7 @@ namespace BLL
             CreateMap<User, UserRequestDTO>().ReverseMap();
             CreateMap<User, UserResponseDTO>().ReverseMap();
             CreateMap<User, UserLoginDTO>().ReverseMap();
+            CreateMap<User, UserResetPasswordDTO>().ReverseMap();
         }
     }
 }

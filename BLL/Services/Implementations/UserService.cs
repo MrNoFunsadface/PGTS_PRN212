@@ -169,5 +169,29 @@ namespace BLL.Services.Implementations
                 Success = true
             };
         }
+
+        public ResponseDTO ForgotPassword(string email, UserResetPasswordDTO userResetPasswordDTO)
+        {
+            var user = _userRepo.GetSingle(u => u.Email == email);
+
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"User with email: {email} not found"
+                };
+            }
+
+            var forgotPasswordUser = _mapper.Map(userResetPasswordDTO, user);
+
+            _userRepo.Update(forgotPasswordUser);
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Password reset successfully."
+            };
+        }
     }
 }

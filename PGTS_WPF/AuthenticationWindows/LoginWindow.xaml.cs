@@ -76,7 +76,7 @@ namespace PGTS_WPF.AuthenticationWindows
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowWindow<ForgotPasswordWindow>();
         }
 
     }
