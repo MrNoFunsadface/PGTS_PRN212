@@ -194,6 +194,21 @@ namespace BLL.Services.Implementations
             };
         }
 
+        public ResponseDTO ChangePassword(int id, UserResetPasswordDTO userResetPasswordDTO)
+        {
+            var user = _userRepo.GetSingle(u => u.Id == id);
+
+            var changePasswordUser = _mapper.Map(userResetPasswordDTO, user);
+
+            _userRepo.Update(changePasswordUser);
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Password updated."
+            };
+        }
+
         public ResponseDTO UpdateUser(int id, UserProfileDTO userProfileDTO)
         {
             var user = _userRepo.GetSingle(u => u.Id == id);

@@ -2,6 +2,7 @@
 using PGTS_WPF.AuthenticationWindows;
 using PGTS_WPF.Helper;
 using PGTS_WPF.Helpers;
+using PGTS_WPF.UserWindows.SecurityWindows;
 using System.Windows;
 
 namespace PGTS_WPF.UserWindows
@@ -44,7 +45,7 @@ namespace PGTS_WPF.UserWindows
 
         private void btnSecurity_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowWindow<SecurityWindow>();
         }
 
         private void btnPregnancies_Click(object sender, RoutedEventArgs e)
