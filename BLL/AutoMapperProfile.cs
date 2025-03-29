@@ -8,11 +8,16 @@ namespace BLL
     {
         public AutoMapperProfile()
         {
+            // User DTOs
             CreateMap<User, UserRequestDTO>().ReverseMap();
             CreateMap<User, UserResponseDTO>().ReverseMap();
             CreateMap<User, UserLoginDTO>().ReverseMap();
             CreateMap<User, UserResetPasswordDTO>().ReverseMap();
             CreateMap<User, UserProfileDTO>().ReverseMap();
+
+            // Pregnancy DTOs
+            CreateMap<Pregnancy, PregnancyRequestDTO>().ReverseMap();
+            CreateMap<Pregnancy, PregnancyResponseDTO>().ReverseMap();
         }
     }
 }
