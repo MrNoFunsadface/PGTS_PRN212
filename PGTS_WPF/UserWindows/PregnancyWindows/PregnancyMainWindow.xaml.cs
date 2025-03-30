@@ -34,22 +34,33 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
             LoadPregnancies();
         }
 
-        private void LoadPregnancies(string search = null)
+        private void LoadPregnancies(DateOnly? from = null, DateOnly? to = null)
         {
-            _pregnanciesList = _pregnancyService.GetAll(search).Data.ToList();
+            _pregnanciesList = _pregnancyService.GetAll(from, to).Data.ToList();
             PregnanciesDataGrid.ItemsSource = _pregnanciesList;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            var searchText = txtSearch.Text;
-            LoadPregnancies(searchText);
+            DateOnly? from = null;
+            DateOnly? to = null;
+
+            if (dpFrom.SelectedDate.HasValue)
+            {
+                from = DateOnly.FromDateTime(dpFrom.SelectedDate.Value);
+            }
+            if (dpTo.SelectedDate.HasValue)
+            {
+                to = DateOnly.FromDateTime(dpTo.SelectedDate.Value);
+            }
+
+            LoadPregnancies(from, to);
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowDialog<CreatePregnancyWindow>();
-            LoadPregnancies(txtSearch.Text);
+            btnSearch_Click(sender, e);
         }
 
         private void btnGrowth_Click(object sender, RoutedEventArgs e)
@@ -69,7 +80,7 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
             {
                 var pregnancyId = button.Tag;
                 _windowManager.ShowDialog<EditPregnancyWindow>(pregnancyId);
-                LoadPregnancies(txtSearch.Text);
+                btnSearch_Click(sender, e);
             }
         }
 
@@ -80,7 +91,7 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
             {
                 var pregnancyId = button.Tag;
                 _windowManager.ShowDialog<DeletePregnancyWindow>(pregnancyId);
-                LoadPregnancies(txtSearch.Text);
+                btnSearch_Click(sender, e);
             }
         }
     }

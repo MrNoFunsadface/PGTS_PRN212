@@ -118,27 +118,21 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO<IEnumerable<PregnancyResponseDTO>> GetAll(string? search)
+        public ResponseDTO<IEnumerable<PregnancyResponseDTO>> GetAll(DateOnly? from, DateOnly? to)
         {
             var pregnancies = _pregnancyRepo.Get().AsEnumerable();
 
-            if (!string.IsNullOrEmpty(search))
+            if (from.HasValue)
             {
-                int pregnancyId;
-                if (int.TryParse(search, out pregnancyId))
-                {
-                    pregnancies = pregnancies.Where(p => p.Id == pregnancyId);
-                }
-                else
-                {
-                    var filter = search.ToLower();
-
-                    pregnancies = pregnancies.Where(p =>
-                        p.ConceptionDate.ToString("yyyy-MM-dd").ToLower().Contains(filter) ||
-                        (p.DueDate.HasValue && p.DueDate.Value.ToString("yyyy-MM-dd").ToLower().Contains(filter))
-                    );
-                }
+                pregnancies = pregnancies.Where(p => p.ConceptionDate >= from.Value || (p.DueDate.HasValue && p.DueDate.Value >= from.Value));
             }
+
+            if (to.HasValue)
+            {
+                pregnancies = pregnancies.Where(p => p.ConceptionDate <= to.Value || (p.DueDate.HasValue && p.DueDate.Value <= to.Value));
+            }
+
+            pregnancies = pregnancies.OrderByDescending(p => p.ConceptionDate);
 
             return new ResponseDTO<IEnumerable<PregnancyResponseDTO>>
             {
