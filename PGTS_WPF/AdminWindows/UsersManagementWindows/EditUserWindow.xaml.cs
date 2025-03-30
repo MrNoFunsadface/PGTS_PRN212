@@ -78,7 +78,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
                 return;
             }
 
-            var response = _userService.UpdateUser(_userId, user);
+            var response = _userService.Update(_userId, user);
             if (response.Success)
             {
                 MessageBox.Show(response.Message, "Registration Successful", MessageBoxButton.OK, MessageBoxImage.Information);

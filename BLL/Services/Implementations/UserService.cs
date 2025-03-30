@@ -232,7 +232,7 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO UpdateUser(int id, UserRequestDTO userRequestDTO)
+        public ResponseDTO Update(int id, UserRequestDTO userRequestDTO)
         {
             var user = _userRepo.GetSingle(u => u.Id == id);
             if (user == null)
@@ -255,7 +255,7 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO DeleteUser(int id, bool softDelete)
+        public ResponseDTO Delete(int id, bool softDelete)
         {
             var user = _userRepo.GetSingle(u => u.Id == id);
 
