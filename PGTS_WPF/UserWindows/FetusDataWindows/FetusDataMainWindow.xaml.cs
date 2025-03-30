@@ -1,7 +1,7 @@
 ﻿using BLL.DTOs;
 using BLL.Services.Interfaces;
 using PGTS_WPF.Helper;
-using PGTS_WPF.UserWindows.FetusDataWindows;
+using PGTS_WPF.UserWindows.PregnancyWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,33 +16,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PGTS_WPF.UserWindows.PregnancyWindows
+namespace PGTS_WPF.UserWindows.FetusDataWindows
 {
     /// <summary>
-    /// Interaction logic for PregnancyMainWindow.xaml
+    /// Interaction logic for FetusDataMainWindow.xaml
     /// </summary>
-    public partial class PregnancyMainWindow : Window
+    public partial class FetusDataMainWindow : Window
     {
+        private readonly int _pregnancyId;
         private readonly IPregnancyService _pregnancyService;
+        private readonly IFetusDataService _fetusDataService;
         private readonly IWindowManager _windowManager;
-        private List<PregnancyResponseDTO> _pregnanciesList;
+        private List<FetusDataResponseDTO> _fetusList;
 
-        public PregnancyMainWindow(IPregnancyService pregnancyService, IWindowManager windowManager)
+        public FetusDataMainWindow(IPregnancyService pregnancyService, IFetusDataService fetusDataService, IWindowManager windowManager)
         {
             InitializeComponent();
             _pregnancyService = pregnancyService;
+            _fetusDataService = fetusDataService;
             _windowManager = windowManager;
-            LoadPregnancies();
+            LoadFetusData();
         }
 
-        private void LoadPregnancies(DateOnly? from = null, DateOnly? to = null)
+        private void LoadFetusData(string? search = "", DateOnly? from = null, DateOnly? to = null)
         {
-            _pregnanciesList = _pregnancyService.GetAll(from, to).Data.ToList();
-            PregnanciesDataGrid.ItemsSource = _pregnanciesList;
+            _fetusList = _fetusDataService.GetAll(_pregnancyId, search, from, to).Data.ToList();
+            FetusDataGrid.ItemsSource = _fetusList;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            string search = txtSearch.Text;
             DateOnly? from = null;
             DateOnly? to = null;
 
@@ -55,29 +59,13 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
                 to = DateOnly.FromDateTime(dpTo.SelectedDate.Value);
             }
 
-            LoadPregnancies(from, to);
+            LoadFetusData(search, from, to);
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowDialog<CreatePregnancyWindow>();
             btnSearch_Click(sender, e);
-        }
-
-        private void btnGrowth_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            if (button != null)
-            {
-                var pregnancyId = button.Tag;
-                _windowManager.ShowDialog<FetusDataMainWindow>(pregnancyId);
-                btnSearch_Click(sender, e);
-            }
-        }
-
-        private void btnMilestones_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
