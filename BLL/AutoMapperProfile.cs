@@ -18,6 +18,10 @@ namespace BLL
             // Pregnancy DTOs
             CreateMap<Pregnancy, PregnancyRequestDTO>().ReverseMap();
             CreateMap<Pregnancy, PregnancyResponseDTO>().ReverseMap();
+
+            // FetusData DTOs
+            CreateMap<FetusData, FetusDataRequestDTO>().ReverseMap();
+            CreateMap<FetusData, FetusDataResponseDTO>().ReverseMap();
         }
     }
 }
