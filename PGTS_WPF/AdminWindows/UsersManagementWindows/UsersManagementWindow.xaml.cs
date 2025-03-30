@@ -49,7 +49,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowDialog<CreateUserWindow>();
-            LoadUsers(txtSearch.Text);
+            btnSearch_Click(sender, e);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
             {
                 var userId = button.Tag;
                 _windowManager.ShowDialog<EditUserWindow>(userId);
-                LoadUsers(txtSearch.Text);
+                btnSearch_Click(sender, e);
             }
         }
 
@@ -70,7 +70,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
             {
                 var userId = button.Tag;
                 _windowManager.ShowDialog<DeleteUserWindow>(userId);
-                LoadUsers(txtSearch.Text);
+                btnSearch_Click(sender, e);
             }
         }
     }
