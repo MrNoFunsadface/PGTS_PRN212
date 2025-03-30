@@ -22,6 +22,10 @@ namespace BLL
             // FetusData DTOs
             CreateMap<FetusData, FetusDataRequestDTO>().ReverseMap();
             CreateMap<FetusData, FetusDataResponseDTO>().ReverseMap();
+
+            // Milestone DTOs
+            CreateMap<Milestone, MilestoneRequestDTO>().ReverseMap();
+            CreateMap<Milestone, MilestoneResponseDTO>().ReverseMap();
         }
     }
 }

@@ -67,7 +67,7 @@ namespace PGTS_WPF
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IPregnancyService, PregnancyService>();
             services.AddSingleton<IFetusDataService, FetusDataService>();
-            //services.AddSingleton<IMilestoneService, MilestoneService>();
+            services.AddSingleton<IMilestoneService, MilestoneService>();
 
             // Register Helpers
             services.AddSingleton<UserSession>();
