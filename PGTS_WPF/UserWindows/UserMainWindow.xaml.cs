@@ -54,16 +54,6 @@ namespace PGTS_WPF.UserWindows
             _windowManager.ShowWindow<PregnancyMainWindow>();
         }
 
-        private void btnMilestones_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
-        }
-
-        private void btnGrowthChart_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO
-        }
-
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowWindow<LoginWindow>();

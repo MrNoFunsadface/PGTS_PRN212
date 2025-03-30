@@ -52,6 +52,16 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
             LoadPregnancies(txtSearch.Text);
         }
 
+        private void btnGrowth_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void btnMilestones_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
