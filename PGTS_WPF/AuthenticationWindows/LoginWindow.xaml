@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF"
         mc:Ignorable="d"
-        Title="Login" Height="360" Width="400"
         Style="{StaticResource MaterialDesignWindow}"
+        Title="Login" Height="360" Width="400"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Margin="20">
@@ -15,7 +15,7 @@
             <TextBlock Text="Password:" Margin="0,0,0,10"/>
             <PasswordBox x:Name="txtPassword" Margin="0,0,0,20"/>
             <Button Content="Login" Click="btnLogin_Click"/>
-            <Label Content="----------or----------" HorizontalAlignment="Center"/>
+            <TextBlock Text="----------or----------" HorizontalAlignment="Center"/>
             <Button Content="Register" Click="btnRegister_Click" Margin="0,0,0,10"/>
             <Button Content="Forgot Password" Click="btnForgotPassword_Click" Margin="0,0,0,10"/>
         </StackPanel>
