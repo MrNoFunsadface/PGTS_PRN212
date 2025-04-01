@@ -69,11 +69,6 @@ namespace BLL.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetAll(string? search, DateOnly? from, DateOnly? to)
-        {
-            throw new NotImplementedException();
-        }
-
         public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetByPregnancyId(int pregnancyId, string? search, DateOnly? from, DateOnly? to)
         {
             var fetusDatas = _fetusDataRepo.Get(fd => fd.PregnancyId == pregnancyId).AsEnumerable();
@@ -115,11 +110,6 @@ namespace BLL.Services.Implementations
                     Date = fd.Date
                 })
             };
-        }
-
-        public ResponseDTO<FetusDataResponseDTO> GetById(int id)
-        {
-            throw new NotImplementedException();
         }
 
         public ResponseDTO Update(int id, FetusDataRequestDTO fetusDataRequestDTO)
