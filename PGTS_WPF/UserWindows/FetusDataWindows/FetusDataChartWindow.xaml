@@ -1,0 +1,25 @@
+﻿<Window x:Class="PGTS_WPF.UserWindows.FetusDataWindows.FetusDataChartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ScottPlot="clr-namespace:ScottPlot.WPF;assembly=ScottPlot.WPF"
+        xmlns:local="clr-namespace:PGTS_WPF.UserWindows.FetusDataWindows"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="Fetus Growth Charts" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Weight">
+                <ScottPlot:WpfPlot x:Name="WeightPlot"/>
+            </TabItem>
+            <TabItem Header="Height">
+                <ScottPlot:WpfPlot x:Name="HeightPlot"/>
+            </TabItem>
+            <TabItem Header="Head Circumference">
+                <ScottPlot:WpfPlot x:Name="HeadCircumferencePlot"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

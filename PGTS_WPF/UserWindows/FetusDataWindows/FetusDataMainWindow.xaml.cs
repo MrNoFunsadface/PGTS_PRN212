@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services.Interfaces;
+using DAL.Entities;
 using PGTS_WPF.Helper;
 using PGTS_WPF.UserWindows.PregnancyWindows;
 using System;
@@ -93,7 +94,7 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
 
         private void btnChart_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowDialog<FetusDataChartWindow>(_fetusList);
         }
     }
 }
