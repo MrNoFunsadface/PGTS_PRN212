@@ -2,6 +2,7 @@
 using BLL.Services.Interfaces;
 using PGTS_WPF.Helper;
 using PGTS_WPF.UserWindows.FetusDataWindows;
+using PGTS_WPF.UserWindows.MilestoneDataWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
         private readonly IPregnancyService _pregnancyService;
         private readonly IWindowManager _windowManager;
         private List<PregnancyResponseDTO> _pregnanciesList;
+        private readonly IMilestoneService _milestoneDataService;
 
         public PregnancyMainWindow(IPregnancyService pregnancyService, IWindowManager windowManager)
         {
@@ -77,7 +79,13 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
 
         private void btnMilestones_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            var button = sender as Button;
+            if (button != null)
+            {
+                var pregnancyId = button.Tag;
+                _windowManager.ShowDialog<MilestoneDataWindow>(pregnancyId);
+                btnSearch_Click(sender, e);
+            }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

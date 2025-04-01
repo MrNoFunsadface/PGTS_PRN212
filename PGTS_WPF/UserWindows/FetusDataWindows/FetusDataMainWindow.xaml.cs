@@ -89,5 +89,10 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
                 btnSearch_Click(sender, e);
             }
         }
+
+        private void FetusDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
