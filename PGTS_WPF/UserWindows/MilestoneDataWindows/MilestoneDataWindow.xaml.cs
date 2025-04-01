@@ -66,12 +66,17 @@ namespace PGTS_WPF.UserWindows.MilestoneDataWindows
 
         public void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            var milestoneId = button.Tag;
+            _windowManager.ShowDialog<EditMilestoneWindow>(milestoneId);
         }
 
         public void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            var milestoneId = button.Tag;
+            _windowManager.ShowDialog<DeleteMilestoneWindow>(milestoneId);
+            LoadMilestoneData();
         }
 
         public void MilestoneDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

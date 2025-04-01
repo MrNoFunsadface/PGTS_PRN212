@@ -76,6 +76,8 @@ namespace PGTS_WPF
             // Register Windows
             services.AddTransient<LoginWindow>();
             services.AddTransient<UserMainWindow>();
+
+
         }
     }
 }

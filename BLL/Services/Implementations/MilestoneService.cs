@@ -53,7 +53,30 @@ namespace BLL.Services.Implementations
 
         public ResponseDTO Delete(int id)
         {
-            throw new NotImplementedException();
+            var milestone = _milestoneRepo.GetSingle(m => m.Id == id);
+            var pregnancy = _pregnancyRepo.GetSingle(p => p.Id == milestone.PregnancyId);
+            if (milestone == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Milestone not found."
+                };
+            }
+            var result = _milestoneRepo.Delete(milestone);
+            if (!result)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Delete failed."
+                };
+            }
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Milestone deleted."
+            };
         }
 
         public ResponseDTO<IEnumerable<MilestoneResponseDTO>> GetAll(int pregnancyId, DateOnly? startDate, DateOnly? endDate)
@@ -87,12 +110,63 @@ namespace BLL.Services.Implementations
 
         public ResponseDTO<MilestoneResponseDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var milestone = _milestoneRepo.GetSingle(m => m.Id == id);
+            var pregnancy = _pregnancyRepo.GetSingle(p => p.Id == milestone.PregnancyId);
+            if (milestone == null)
+            {
+                return new ResponseDTO<MilestoneResponseDTO>
+                {
+                    Success = false,
+                    Message = "Milestone not found."
+                };
+            }
+            return new ResponseDTO<MilestoneResponseDTO>
+            {
+                Success = true,
+                Message = "Milestone found.",
+                Data = new MilestoneResponseDTO
+                {
+                    Id = milestone.Id,
+                    Date = milestone.Date,
+                    Description = milestone.Descriptions
+                }
+            };
         }
 
         public ResponseDTO Update(int id, MilestoneRequestDTO milestoneRequestDTO)
         {
-            throw new NotImplementedException();
+            var milestone = _milestoneRepo.GetSingle(m => m.Id == id);
+            var pregnancy = _pregnancyRepo.GetSingle(p => p.Id == milestone.PregnancyId);
+            if (milestone == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Milestone not found."
+                };
+            }
+            var updatedMilestone = new Milestone
+            {
+                Id = id,
+                Date = milestoneRequestDTO.Date,
+                Descriptions = milestoneRequestDTO.Descriptions,
+                PregnancyId = milestone.PregnancyId,
+                Pregnancy = pregnancy
+            };
+            var result = _milestoneRepo.Update(updatedMilestone);
+            if (!result)
+            {
+                return new ResponseDTO  
+                {
+                    Success = false,
+                    Message = updatedMilestone.Date.ToString()
+                };
+            }
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Milestone updated."
+            };
         }
     }
 }

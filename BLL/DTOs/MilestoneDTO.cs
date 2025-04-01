@@ -22,6 +22,7 @@ namespace BLL.DTOs
     public class MilestoneResponseDTO
     {
         public int Id { get; set; }
+        public int PregnancyId { get; set; }
         public string? Description { get; set; }
         public DateOnly Date { get; set; }
     }

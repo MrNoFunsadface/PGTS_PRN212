@@ -27,4 +27,16 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="UserWindows\MilestoneDataWindows\CreateMilestoneWindow.xaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="UserWindows\MilestoneDataWindows\EditMilestoneWindow.xaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="UserWindows\MilestoneDataWindows\MilestoneDataWindow.xaml.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>
