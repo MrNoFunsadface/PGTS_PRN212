@@ -90,5 +90,10 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
                 btnSearch_Click(sender, e);
             }
         }
+
+        private void btnChart_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
     }
 }
