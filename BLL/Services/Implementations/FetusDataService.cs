@@ -104,7 +104,7 @@ namespace BLL.Services.Implementations
             return new ResponseDTO<IEnumerable<FetusDataResponseDTO>>
             {
                 Success = true,
-                Message = "List of bookings",
+                Message = "List of fetus growth data",
                 Data = fetusDatas.Select(fd => new FetusDataResponseDTO
                 {
                     Id = fd.Id,
