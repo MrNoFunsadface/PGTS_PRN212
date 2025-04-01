@@ -75,13 +75,11 @@ namespace BLL.Services.Implementations
 
             if (!string.IsNullOrEmpty(search))
             {
-                int id;
-                if (int.TryParse(search, out id))
-                {
-                    fetusDatas = fetusDatas.Where(fd => fd.Id == id
-                                            || fd.PregnancyId == id);
-                }
-
+                fetusDatas = fetusDatas.Where(fd =>
+                    fd.Id.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    fd.Weight.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    fd.Height.ToString().Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                    fd.HeadCircumference.ToString().Contains(search, StringComparison.OrdinalIgnoreCase));
             }
 
             if (from.HasValue)
