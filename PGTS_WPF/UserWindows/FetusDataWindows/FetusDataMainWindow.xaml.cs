@@ -29,9 +29,10 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
         private readonly IWindowManager _windowManager;
         private List<FetusDataResponseDTO> _fetusList;
 
-        public FetusDataMainWindow(IPregnancyService pregnancyService, IFetusDataService fetusDataService, IWindowManager windowManager)
+        public FetusDataMainWindow(int pregnancyId, IPregnancyService pregnancyService, IFetusDataService fetusDataService, IWindowManager windowManager)
         {
             InitializeComponent();
+            _pregnancyId = pregnancyId;
             _pregnancyService = pregnancyService;
             _fetusDataService = fetusDataService;
             _windowManager = windowManager;
@@ -40,7 +41,7 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
 
         private void LoadFetusData(string? search = "", DateOnly? from = null, DateOnly? to = null)
         {
-            _fetusList = _fetusDataService.GetAll(_pregnancyId, search, from, to).Data.ToList();
+            _fetusList = _fetusDataService.GetByPregnancyId(_pregnancyId, search, from, to).Data.ToList();
             FetusDataGrid.ItemsSource = _fetusList;
         }
 

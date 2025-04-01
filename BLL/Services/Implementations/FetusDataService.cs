@@ -69,9 +69,52 @@ namespace BLL.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetAll(int pregnancyId, string? search, DateOnly? from, DateOnly? to)
+        public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetAll(string? search, DateOnly? from, DateOnly? to)
         {
             throw new NotImplementedException();
+        }
+
+        public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetByPregnancyId(int pregnancyId, string? search, DateOnly? from, DateOnly? to)
+        {
+            var fetusDatas = _fetusDataRepo.Get(fd => fd.PregnancyId == pregnancyId).AsEnumerable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                int id;
+                if (int.TryParse(search, out id))
+                {
+                    fetusDatas = fetusDatas.Where(fd => fd.Id == id
+                                            || fd.PregnancyId == id);
+                }
+
+            }
+
+            if (from.HasValue)
+            {
+                fetusDatas = fetusDatas.Where(fd => fd.Date >= from.Value);
+            }
+
+            if (to.HasValue)
+            {
+                fetusDatas = fetusDatas.Where(fd => fd.Date <= to.Value);
+            }
+
+            fetusDatas = fetusDatas.OrderByDescending(fd => fd.Date);
+
+            return new ResponseDTO<IEnumerable<FetusDataResponseDTO>>
+            {
+                Success = true,
+                Message = "List of bookings",
+                Data = fetusDatas.Select(fd => new FetusDataResponseDTO
+                {
+                    Id = fd.Id,
+                    PregnancyId = fd.PregnancyId,
+                    Weight = fd.Weight,
+                    Height = fd.Height,
+                    HeadCircumference = fd.HeadCircumference,
+                    Date = fd.Date
+                })
+            };
         }
 
         public ResponseDTO<FetusDataResponseDTO> GetById(int id)
