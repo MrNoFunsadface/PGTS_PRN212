@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "Name": "Admin",
+    "Email": "admin@example.com",
+    "Password": "Admin@123",
+    "Phone": "0905123000",
+    "isAdmin": true,
+    "isActive": true
+  },
+  {
+    "Id": 2,
+    "Name": "Elizabeth Taylor",
+    "Email": "active.user@example.com",
+    "Password": "ActiveUser@123",
+    "Phone": "0905123001",
+    "isAdmin": false,
+    "isActive": true
+  },
+  {
+    "Id": 3,
+    "Name": "Victoria Beckham",
+    "Email": "inactive.user@example.com",
+    "Password": "InactiveUser@123",
+    "Phone": "0905123002",
+    "isAdmin": false,
+    "isActive": false
+  }
+]

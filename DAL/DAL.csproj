@@ -24,4 +24,19 @@
     <Folder Include="Repo\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\SeedData\FetusDataSeedData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\SeedData\MilestoneSeedData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\SeedData\PregnancySeedData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\SeedData\UserSeedData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,7 @@
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Text.Json;
 
 namespace DAL.Configs
 {
@@ -29,22 +30,15 @@ namespace DAL.Configs
                 .HasForeignKey(m => m.PregnancyId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasData(
-                new Pregnancy
-                {
-                    Id = 1,
-                    ConceptionDate = new DateOnly(2021, 1, 1),
-                    DueDate = new DateOnly(2021, 9, 1),
-                    UserId = 2,
-                },
-                new Pregnancy
-                {
-                    Id = 2,
-                    ConceptionDate = new DateOnly(2021, 2, 1),
-                    DueDate = new DateOnly(2021, 10, 1),
-                    UserId = 3,
-                }
-            );
+            var pregnancies = LoadPregnancySeedData();
+            builder.HasData(pregnancies);
+        }
+
+        private List<Pregnancy> LoadPregnancySeedData()
+        {
+            var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "PregnancySeedData.json");
+            var jsonData = File.ReadAllText(jsonFilePath);
+            return JsonSerializer.Deserialize<List<Pregnancy>>(jsonData);
         }
     }
 }

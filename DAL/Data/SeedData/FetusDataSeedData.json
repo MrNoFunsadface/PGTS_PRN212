@@ -1,0 +1,322 @@
+[
+  {
+    "Id": 1,
+    "PregnancyId": 1,
+    "Weight": 3.0,
+    "Height": 45.0,
+    "HeadCircumference": 28.0,
+    "Date": "2023-01-01"
+  },
+  {
+    "Id": 2,
+    "PregnancyId": 1,
+    "Weight": 3.3,
+    "Height": 45.8,
+    "HeadCircumference": 28.4,
+    "Date": "2023-01-08"
+  },
+  {
+    "Id": 3,
+    "PregnancyId": 1,
+    "Weight": 3.5,
+    "Height": 46.5,
+    "HeadCircumference": 28.9,
+    "Date": "2023-01-15"
+  },
+  {
+    "Id": 4,
+    "PregnancyId": 1,
+    "Weight": 3.7,
+    "Height": 47.2,
+    "HeadCircumference": 29.3,
+    "Date": "2023-01-22"
+  },
+  {
+    "Id": 5,
+    "PregnancyId": 1,
+    "Weight": 4.0,
+    "Height": 48.0,
+    "HeadCircumference": 29.8,
+    "Date": "2023-01-29"
+  },
+  {
+    "Id": 6,
+    "PregnancyId": 1,
+    "Weight": 4.2,
+    "Height": 49.0,
+    "HeadCircumference": 30.2,
+    "Date": "2023-02-05"
+  },
+  {
+    "Id": 7,
+    "PregnancyId": 1,
+    "Weight": 4.5,
+    "Height": 50.2,
+    "HeadCircumference": 30.7,
+    "Date": "2023-02-12"
+  },
+  {
+    "Id": 8,
+    "PregnancyId": 1,
+    "Weight": 4.7,
+    "Height": 51.0,
+    "HeadCircumference": 31.1,
+    "Date": "2023-02-19"
+  },
+  {
+    "Id": 9,
+    "PregnancyId": 1,
+    "Weight": 5.0,
+    "Height": 52.3,
+    "HeadCircumference": 31.6,
+    "Date": "2023-02-26"
+  },
+  {
+    "Id": 10,
+    "PregnancyId": 1,
+    "Weight": 5.3,
+    "Height": 53.5,
+    "HeadCircumference": 32.0,
+    "Date": "2023-03-05"
+  },
+  {
+    "Id": 11,
+    "PregnancyId": 1,
+    "Weight": 5.6,
+    "Height": 54.8,
+    "HeadCircumference": 32.6,
+    "Date": "2023-03-12"
+  },
+  {
+    "Id": 12,
+    "PregnancyId": 1,
+    "Weight": 5.8,
+    "Height": 55.5,
+    "HeadCircumference": 33.0,
+    "Date": "2023-03-19"
+  },
+  {
+    "Id": 13,
+    "PregnancyId": 1,
+    "Weight": 6.1,
+    "Height": 56.8,
+    "HeadCircumference": 33.5,
+    "Date": "2023-03-26"
+  },
+  {
+    "Id": 14,
+    "PregnancyId": 1,
+    "Weight": 6.3,
+    "Height": 57.5,
+    "HeadCircumference": 34.0,
+    "Date": "2023-04-02"
+  },
+  {
+    "Id": 15,
+    "PregnancyId": 1,
+    "Weight": 6.6,
+    "Height": 58.3,
+    "HeadCircumference": 34.4,
+    "Date": "2023-04-09"
+  },
+  {
+    "Id": 16,
+    "PregnancyId": 1,
+    "Weight": 6.9,
+    "Height": 59.0,
+    "HeadCircumference": 34.9,
+    "Date": "2023-04-16"
+  },
+  {
+    "Id": 17,
+    "PregnancyId": 1,
+    "Weight": 7.1,
+    "Height": 60.2,
+    "HeadCircumference": 35.3,
+    "Date": "2023-04-23"
+  },
+  {
+    "Id": 18,
+    "PregnancyId": 1,
+    "Weight": 7.4,
+    "Height": 61.0,
+    "HeadCircumference": 35.8,
+    "Date": "2023-04-30"
+  },
+  {
+    "Id": 19,
+    "PregnancyId": 1,
+    "Weight": 7.7,
+    "Height": 62.5,
+    "HeadCircumference": 36.2,
+    "Date": "2023-05-07"
+  },
+  {
+    "Id": 20,
+    "PregnancyId": 1,
+    "Weight": 7.5,
+    "Height": 62.5,
+    "HeadCircumference": 36.7,
+    "Date": "2023-05-14"
+  },
+  {
+    "Id": 21,
+    "PregnancyId": 1,
+    "Weight": 7.0,
+    "Height": 65.0,
+    "HeadCircumference": 38.0,
+    "Date": "2023-05-21"
+  },
+  {
+    "Id": 22,
+    "PregnancyId": 1,
+    "Weight": 7.2,
+    "Height": 66.0,
+    "HeadCircumference": 38.5,
+    "Date": "2023-05-28"
+  },
+  {
+    "Id": 23,
+    "PregnancyId": 1,
+    "Weight": 7.4,
+    "Height": 67.0,
+    "HeadCircumference": 39.0,
+    "Date": "2023-06-04"
+  },
+  {
+    "Id": 24,
+    "PregnancyId": 1,
+    "Weight": 7.6,
+    "Height": 68.0,
+    "HeadCircumference": 39.5,
+    "Date": "2023-06-11"
+  },
+  {
+    "Id": 25,
+    "PregnancyId": 1,
+    "Weight": 7.8,
+    "Height": 69.0,
+    "HeadCircumference": 40.0,
+    "Date": "2023-06-18"
+  },
+  {
+    "Id": 26,
+    "PregnancyId": 1,
+    "Weight": 8.0,
+    "Height": 70.0,
+    "HeadCircumference": 40.5,
+    "Date": "2023-06-25"
+  },
+  {
+    "Id": 27,
+    "PregnancyId": 1,
+    "Weight": 8.2,
+    "Height": 71.0,
+    "HeadCircumference": 41.0,
+    "Date": "2023-07-02"
+  },
+  {
+    "Id": 28,
+    "PregnancyId": 1,
+    "Weight": 8.4,
+    "Height": 72.0,
+    "HeadCircumference": 41.5,
+    "Date": "2023-07-09"
+  },
+  {
+    "Id": 29,
+    "PregnancyId": 1,
+    "Weight": 8.6,
+    "Height": 73.0,
+    "HeadCircumference": 42.0,
+    "Date": "2023-07-16"
+  },
+  {
+    "Id": 30,
+    "PregnancyId": 1,
+    "Weight": 8.8,
+    "Height": 74.0,
+    "HeadCircumference": 42.5,
+    "Date": "2023-07-23"
+  },
+  {
+    "Id": 31,
+    "PregnancyId": 1,
+    "Weight": 9.1,
+    "Height": 75.2,
+    "HeadCircumference": 43.1,
+    "Date": "2023-07-30"
+  },
+  {
+    "Id": 32,
+    "PregnancyId": 1,
+    "Weight": 9.3,
+    "Height": 76.5,
+    "HeadCircumference": 43.6,
+    "Date": "2023-08-06"
+  },
+  {
+    "Id": 33,
+    "PregnancyId": 1,
+    "Weight": 9.5,
+    "Height": 77.3,
+    "HeadCircumference": 44.2,
+    "Date": "2023-08-13"
+  },
+  {
+    "Id": 34,
+    "PregnancyId": 1,
+    "Weight": 9.7,
+    "Height": 78.1,
+    "HeadCircumference": 44.7,
+    "Date": "2023-08-20"
+  },
+  {
+    "Id": 35,
+    "PregnancyId": 1,
+    "Weight": 9.9,
+    "Height": 79.4,
+    "HeadCircumference": 45.3,
+    "Date": "2023-08-27"
+  },
+  {
+    "Id": 36,
+    "PregnancyId": 1,
+    "Weight": 10.1,
+    "Height": 80.2,
+    "HeadCircumference": 45.8,
+    "Date": "2023-09-03"
+  },
+  {
+    "Id": 37,
+    "PregnancyId": 1,
+    "Weight": 10.4,
+    "Height": 81.5,
+    "HeadCircumference": 46.4,
+    "Date": "2023-09-10"
+  },
+  {
+    "Id": 38,
+    "PregnancyId": 1,
+    "Weight": 10.6,
+    "Height": 82.3,
+    "HeadCircumference": 46.9,
+    "Date": "2023-09-17"
+  },
+  {
+    "Id": 39,
+    "PregnancyId": 1,
+    "Weight": 10.7,
+    "Height": 83.7,
+    "HeadCircumference": 47.3,
+    "Date": "2023-09-24"
+  },
+  {
+    "Id": 40,
+    "PregnancyId": 1,
+    "Weight": 10.9,
+    "Height": 84.5,
+    "HeadCircumference": 47.8,
+    "Date": "2023-10-01"
+  }
+]

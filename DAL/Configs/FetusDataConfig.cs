@@ -1,6 +1,7 @@
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Text.Json;
 
 namespace DAL.Configs
 {
@@ -25,44 +26,15 @@ namespace DAL.Configs
                 .HasForeignKey(fg => fg.PregnancyId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasData(
-                new FetusData
-                {
-                    Id = 1,
-                    PregnancyId = 1,
-                    Weight = 3.5m,
-                    Height = 50.0m,
-                    HeadCircumference = 30.0m,
-                    Date = new DateOnly(2021, 1, 1)
-                },
-                new FetusData
-                {
-                    Id = 2,
-                    PregnancyId = 1,
-                    Weight = 4.0m,
-                    Height = 55.0m,
-                    HeadCircumference = 32.0m,
-                    Date = new DateOnly(2021, 2, 1)
-                },
-                new FetusData
-                {
-                    Id = 3,
-                    PregnancyId = 2,
-                    Weight = 3.0m,
-                    Height = 45.0m,
-                    HeadCircumference = 28.0m,
-                    Date = new DateOnly(2021, 1, 1)
-                },
-                new FetusData
-                {
-                    Id = 4,
-                    PregnancyId = 2,
-                    Weight = 3.5m,
-                    Height = 50.0m,
-                    HeadCircumference = 30.0m,
-                    Date = new DateOnly(2021, 2, 1)
-                }
-            );
+            var fetusData = LoadFetusDataSeedData();
+            builder.HasData(fetusData);
+        }
+
+        private List<FetusData> LoadFetusDataSeedData()
+        {
+            var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "FetusDataSeedData.json");
+            var jsonData = File.ReadAllText(jsonFilePath);
+            return JsonSerializer.Deserialize<List<FetusData>>(jsonData);
         }
     }
 }

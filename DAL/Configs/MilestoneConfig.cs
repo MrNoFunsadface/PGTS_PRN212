@@ -1,6 +1,7 @@
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Text.Json;
 
 namespace DAL.Configs
 {
@@ -18,29 +19,15 @@ namespace DAL.Configs
                 .WithMany(p => p.Milestones)
                 .HasForeignKey(m => m.PregnancyId);
 
-            builder.HasData(
-                new Milestone
-                {
-                    Id = 1,
-                    PregnancyId = 1,
-                    Descriptions = "First Trimester",
-                    Date = new DateOnly(2021, 1, 1)
-                },
-                new Milestone
-                {
-                    Id = 2,
-                    PregnancyId = 1,
-                    Descriptions = "Second Trimester",
-                    Date = new DateOnly(2021, 4, 1)
-                },
-                new Milestone
-                {
-                    Id = 3,
-                    PregnancyId = 1,
-                    Descriptions = "Third Trimester",
-                    Date = new DateOnly(2021, 7, 1)
-                }
-            );
+            var milestones = LoadMilestoneSeedData();
+            builder.HasData(milestones);
+        }
+
+        private List<Milestone> LoadMilestoneSeedData()
+        {
+            var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "MilestoneSeedData.json");
+            var jsonData = File.ReadAllText(jsonFilePath);
+            return JsonSerializer.Deserialize<List<Milestone>>(jsonData);
         }
     }
 }

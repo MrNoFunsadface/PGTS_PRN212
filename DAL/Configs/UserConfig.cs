@@ -1,6 +1,8 @@
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection;
+using System.Text.Json;
 
 namespace DAL.Configs
 {
@@ -27,38 +29,16 @@ namespace DAL.Configs
                 .HasForeignKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasData(
-                new User
-                {
-                    Id = 1,
-                    Name = "Admin",
-                    Email = "admin@example.com",
-                    Password = "Admin@123",
-                    Phone = "0905123456",
-                    isAdmin = true,
-                    isActive = true,
-                },
-                new User
-                {
-                    Id = 2,
-                    Name = "Elizabeth Taylor",
-                    Email = "user1@example.com",
-                    Password = "User1@123",
-                    Phone = "0905123457",
-                    isAdmin = false,
-                    isActive = true,
-                },
-                new User
-                {
-                    Id = 3,
-                    Name = "Victoria Beckham",
-                    Email = "user2@example.com",
-                    Password = "User2@123",
-                    Phone = "0905123458",
-                    isAdmin = false,
-                    isActive = false,
-                }
-            );
+            var users = LoadUserSeedData();
+            builder.HasData(users);
         }
+
+        private List<User> LoadUserSeedData()
+        {
+            var jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "SeedData", "UserSeedData.json");
+            var jsonData = File.ReadAllText(jsonFilePath);
+            return JsonSerializer.Deserialize<List<User>>(jsonData);
+        }
+
     }
 }

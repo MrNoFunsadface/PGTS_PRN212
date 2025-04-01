@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "PregnancyId": 1,
+    "Descriptions": "First Trimester",
+    "Date": "2023-01-01"
+  },
+  {
+    "Id": 2,
+    "PregnancyId": 1,
+    "Descriptions": "First Doctor Visit",
+    "Date": "2023-01-15"
+  },
+  {
+    "Id": 3,
+    "PregnancyId": 1,
+    "Descriptions": "Second Trimester",
+    "Date": "2023-04-01"
+  },
+  {
+    "Id": 4,
+    "PregnancyId": 1,
+    "Descriptions": "Baby's First Kick",
+    "Date": "2023-05-01"
+  },
+  {
+    "Id": 5,
+    "PregnancyId": 1,
+    "Descriptions": "Gender Reveal",
+    "Date": "2023-06-01"
+  },
+  {
+    "Id": 6,
+    "PregnancyId": 1,
+    "Descriptions": "Third Trimester",
+    "Date": "2023-07-01"
+  },
+  {
+    "Id": 7,
+    "PregnancyId": 1,
+    "Descriptions": "Ultrasound Checkup",
+    "Date": "2023-08-01"
+  },
+  {
+    "Id": 8,
+    "PregnancyId": 1,
+    "Descriptions": "Baby Shower",
+    "Date": "2023-08-15"
+  },
+  {
+    "Id": 9,
+    "PregnancyId": 1,
+    "Descriptions": "Final Doctor Visit",
+    "Date": "2023-09-15"
+  },
+  {
+    "Id": 10,
+    "PregnancyId": 1,
+    "Descriptions": "Due Date",
+    "Date": "2023-10-01"
+  }
+]
