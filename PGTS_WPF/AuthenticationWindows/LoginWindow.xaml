@@ -14,7 +14,7 @@
             <TextBox x:Name="txtEmail" Margin="0,0,0,20"/>
             <TextBlock Text="Password:" Margin="0,0,0,10"/>
             <PasswordBox x:Name="txtPassword" Margin="0,0,0,20"/>
-            <Button Content="Login" Click="btnLogin_Click"/>
+            <Button Content="Login" Click="btnLogin_Click" Background="#FFFAF3E0"/>
             <TextBlock Text="----------or----------" HorizontalAlignment="Center"/>
             <Button Content="Register" Click="btnRegister_Click" Margin="0,0,0,10"/>
             <Button Content="Forgot Password" Click="btnForgotPassword_Click" Margin="0,0,0,10"/>
