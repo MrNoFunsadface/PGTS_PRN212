@@ -74,7 +74,7 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
             if (button != null)
             {
                 var milestoneId = button.Tag;
-                _windowManager.ShowDialog<EditFetusDataWindow>(milestoneId);
+                _windowManager.ShowDialog<EditMilestoneWindow>(milestoneId);
                 btnSearch_Click(sender, e);
             }
         }
@@ -88,11 +88,6 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
                 _windowManager.ShowDialog<DeleteMilestoneWindow>(milestoneId);
                 btnSearch_Click(sender, e);
             }
-        }
-
-        private void btnChart_Click(object sender, RoutedEventArgs e)
-        {
-            _windowManager.ShowDialog<FetusDataChartWindow>(_milestoneList);
         }
     }
 }

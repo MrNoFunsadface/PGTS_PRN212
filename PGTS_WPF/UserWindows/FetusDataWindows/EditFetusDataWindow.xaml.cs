@@ -98,13 +98,13 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
             var response = _fetusDataService.Update(_fetusId, fetus);
             if (response.Success)
             {
-                MessageBox.Show(response.Message, "Fetus Data Added", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(response.Message, "Fetus Data Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
                 return;
             }
             else
             {
-                MessageBox.Show(response.Message, "Fetus Data Add Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(response.Message, "Fetus Data Update Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
         }
