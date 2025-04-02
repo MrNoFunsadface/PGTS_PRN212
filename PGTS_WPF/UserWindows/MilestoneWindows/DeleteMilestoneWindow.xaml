@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows.MilestoneWindows"
         mc:Ignorable="d"
-        Title="DeleteMilestoneWindow" Height="450" Width="800">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="Delete Milestone?" Height="200" Width="400">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Are you sure you want to delete this milestone?" TextAlignment="Center" Margin="0,0,0,20"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Yes" Width="100" Height="30" Click="btnYes_Click" Margin="0,0,10,0"/>
+                <Button Content="No" Width="100" Height="30" Click="btnNo_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -85,7 +85,7 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
             if (button != null)
             {
                 var milestoneId = button.Tag;
-                _windowManager.ShowDialog<DeleteFetusDataWindow>(milestoneId);
+                _windowManager.ShowDialog<DeleteMilestoneWindow>(milestoneId);
                 btnSearch_Click(sender, e);
             }
         }
