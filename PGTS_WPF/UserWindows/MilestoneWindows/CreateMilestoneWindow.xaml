@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows.MilestoneWindows"
         mc:Ignorable="d"
-        Title="CreateMilestoneWindow" Height="450" Width="800">
+        Style="{StaticResource MaterialDesignWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="CreateMilestoneWindow" Height="250" Width="450">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Descriptions" Margin="0,0,0,10"/>
+            <TextBox Name="txtDescriptions" Margin="0,0,0,10"/>
+            <TextBlock Text="Date" Margin="0,0,0,10"/>
+            <DatePicker Name="dpDate" Margin="0,0,0,10" />
+            <Button Content="Create" Click="btnCreate_Click" Margin="0,0,0,10"/>
+        </StackPanel>
     </Grid>
 </Window>

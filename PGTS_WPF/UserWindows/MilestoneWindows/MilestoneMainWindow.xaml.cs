@@ -64,7 +64,7 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            _windowManager.ShowDialog<CreateFetusDataWindow>(_pregnancyId);
+            _windowManager.ShowDialog<CreateMilestoneWindow>(_pregnancyId);
             btnSearch_Click(sender, e);
         }
 
@@ -73,8 +73,8 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
             var button = sender as Button;
             if (button != null)
             {
-                var fetusId = button.Tag;
-                _windowManager.ShowDialog<EditFetusDataWindow>(fetusId);
+                var milestoneId = button.Tag;
+                _windowManager.ShowDialog<EditFetusDataWindow>(milestoneId);
                 btnSearch_Click(sender, e);
             }
         }
@@ -84,8 +84,8 @@ namespace PGTS_WPF.UserWindows.MilestoneWindows
             var button = sender as Button;
             if (button != null)
             {
-                var fetusId = button.Tag;
-                _windowManager.ShowDialog<DeleteFetusDataWindow>(fetusId);
+                var milestoneId = button.Tag;
+                _windowManager.ShowDialog<DeleteFetusDataWindow>(milestoneId);
                 btnSearch_Click(sender, e);
             }
         }
