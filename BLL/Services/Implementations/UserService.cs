@@ -268,6 +268,19 @@ namespace BLL.Services.Implementations
                 };
             }
 
+            if (user.isAdmin)
+            {
+                var adminCount = _userRepo.Get(u => u.isAdmin).Count();
+                if (adminCount == 1)
+                {
+                    return new ResponseDTO
+                    {
+                        Success = false,
+                        Message = "Cannot delete the only admin user."
+                    };
+                }
+            }
+
             var delete = _userRepo.Delete(user);
 
             if (!delete)

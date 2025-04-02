@@ -27,14 +27,13 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="180"/>
                 <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="125"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding isActive}" Width="80"/>
                 <DataGridTextColumn Header="Admin" Binding="{Binding isAdmin}" Width="80"/>
-                <DataGridTemplateColumn Header="Tools" Width="280">
+                <DataGridTemplateColumn Header="Tools" Width="300">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Edit" Width="60" Margin="5,0,0,0" Click="btnEdit_Click" Tag="{Binding Id}"/>
-                                <Button Content="Toggle" Width="80" Margin="5,0,0,0" Click="btnToggle_Click" Tag="{Binding Id}"/>
+                                <Button Content="Deactivate" Width="100" Margin="5,0,0,0" Click="btnToggle_Click" Tag="{Binding Id}"/>
                                 <Button Content="Delete" Width="80" Margin="5,0,0,0" Click="btnDelete_Click" Tag="{Binding Id}"/>
                             </StackPanel>
                         </DataTemplate>
