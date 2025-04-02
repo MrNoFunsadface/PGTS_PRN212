@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows.FetusDataWindows"
+        xmlns:helpers="clr-namespace:PGTS_WPF.Helpers"
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
@@ -17,7 +18,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10" HorizontalAlignment="Left" Width="300">
-                <TextBox x:Name="txtSearch" Width="250" Height="30" Margin="0,0,0,10"/>
+                <TextBox x:Name="txtSearch" Width="250" Height="30" Margin="0,0,0,10" helpers:TextBoxHelper.Placeholder="Search fetus data points"/>
                 <DatePicker x:Name="dpFrom" Width="250" Margin="0,0,0,10"/>
                 <DatePicker x:Name="dpTo" Width="250" Margin="0,0,0,10"/>
 

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.AdminWindows.UserRequestsWindows"
+        xmlns:helpers="clr-namespace:PGTS_WPF.Helpers"
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-            <TextBox x:Name="txtSearch" Width="300" Height="30" Margin="0,0,10,0"/>
+            <TextBox x:Name="txtSearch" Width="300" Height="30" Margin="0,0,10,0" helpers:TextBoxHelper.Placeholder="Search user requests"/>
             <Button Content="Search" Width="100" Height="30" Click="btnSearch_Click"/>
         </StackPanel>
 
