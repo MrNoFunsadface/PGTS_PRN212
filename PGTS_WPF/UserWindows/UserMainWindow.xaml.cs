@@ -2,7 +2,6 @@
 using PGTS_WPF.AuthenticationWindows;
 using PGTS_WPF.Helper;
 using PGTS_WPF.Helpers;
-using PGTS_WPF.UserWindows.MilestoneWindows;
 using PGTS_WPF.UserWindows.PregnancyWindows;
 using PGTS_WPF.UserWindows.SecurityWindows;
 using System.Windows;
@@ -55,16 +54,10 @@ namespace PGTS_WPF.UserWindows
             _windowManager.ShowWindow<PregnancyMainWindow>();
         }
 
-        private void btnMilestones_Click(object sender, RoutedEventArgs e)
-        {
-            _windowManager.ShowWindow<MilestoneMainWindow>();
-        }
-
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             _windowManager.ShowWindow<LoginWindow>();
             Close();
         }
-
     }
 }

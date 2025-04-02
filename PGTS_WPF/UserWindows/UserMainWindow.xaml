@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
-        Title="User Dashboard" Height="400" Width="800">
+        Title="User Dashboard" Height="350" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -36,7 +36,6 @@
             <Button Content="Profile" Width="200" Height="50" Margin="0,10" Click="btnProfile_Click"/>
             <Button Content="Security" Width="200" Height="50" Margin="0,10" Click="btnSecurity_Click"/>
             <Button Content="Pregnancies" Width="200" Height="50" Margin="0,10" Click="btnPregnancies_Click"/>
-            <Button Content="Milestones" Width="200" Height="50" Margin="0,10" Click="btnMilestones_Click"/>
         </StackPanel>
         <Button Content="Log Out" Click="btnLogout_Click" Margin="33,19,650,21" RenderTransformOrigin="0.662,1.022"/>
     </Grid>

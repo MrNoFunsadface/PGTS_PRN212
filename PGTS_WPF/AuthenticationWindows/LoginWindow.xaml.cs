@@ -49,6 +49,7 @@ namespace PGTS_WPF.AuthenticationWindows
 
             if (response.Success)
             {
+                MessageBox.Show(response.Message, "Login Successful", MessageBoxButton.OK, MessageBoxImage.Information);
                 _userSession.UserResponse = response.Data;
 
                 if (response.Data.isAdmin)
