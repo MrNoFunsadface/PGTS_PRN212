@@ -305,5 +305,33 @@ namespace BLL.Services.Implementations
                 Message = "Delete successful"
             };
         }
+
+        public ResponseDTO ToggleStatus(int id)
+        {
+            var user = _userRepo.GetSingle(u => u.Id == id);
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"User with ID: {id} not found"
+                };
+            }
+            user.isActive = !user.isActive;
+            var update = _userRepo.Update(user);
+            if (!update)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Toggle status failed."
+                };
+            }
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Toggle status successful."
+            };
+        }
     }
 }

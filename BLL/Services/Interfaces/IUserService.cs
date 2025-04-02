@@ -13,5 +13,6 @@ namespace BLL.Services.Interfaces
         public ResponseDTO UpdateProfile(int id, UserProfileDTO userProfileDTO);
         public ResponseDTO Update(int id, UserRequestDTO userRequestDTO);
         public ResponseDTO Delete(int id, bool softDelete);
+        public ResponseDTO ToggleStatus(int id);
     }
 }

@@ -73,5 +73,16 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
                 btnSearch_Click(sender, e);
             }
         }
+
+        private void btnToggle_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                var userId = button.Tag;
+                _windowManager.ShowDialog<ToggleUserStatusWindow>(userId);
+                btnSearch_Click(sender, e);
+            }
+        }
     }
 }

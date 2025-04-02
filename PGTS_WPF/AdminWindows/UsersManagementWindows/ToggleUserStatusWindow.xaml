@@ -1,4 +1,4 @@
-﻿<Window x:Class="PGTS_WPF.AdminWindows.UsersManagementWindows.DeleteUserWindow"
+﻿<Window x:Class="PGTS_WPF.AdminWindows.UsersManagementWindows.ToggleUserStatusWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Style="{StaticResource MaterialDesignWindow}"
         WindowStartupLocation="CenterScreen"
-        Title="Delete User?" Height="200" Width="400">
+        Title="Toggle User's Status?" Height="200" Width="400">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Are you sure you want to delete this user?" TextAlignment="Center" Margin="0,0,0,20"/>
+            <TextBlock Text="Are you sure you want to toggle this user's active status?" TextAlignment="Center" Margin="0,0,0,20"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Yes" Width="100" Height="30" Click="btnYes_Click" Margin="0,0,10,0"/>
                 <Button Content="No" Width="100" Height="30" Click="btnNo_Click"/>
