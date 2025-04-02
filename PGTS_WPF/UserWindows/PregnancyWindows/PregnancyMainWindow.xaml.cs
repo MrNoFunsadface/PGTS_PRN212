@@ -2,7 +2,6 @@
 using BLL.Services.Interfaces;
 using PGTS_WPF.Helper;
 using PGTS_WPF.UserWindows.FetusDataWindows;
-using PGTS_WPF.UserWindows.MilestoneWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,13 +77,7 @@ namespace PGTS_WPF.UserWindows.PregnancyWindows
 
         private void btnMilestones_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            if (button != null)
-            {
-                var pregnancyId = button.Tag;
-                _windowManager.ShowDialog<MilestoneMainWindow>(pregnancyId);
-                btnSearch_Click(sender, e);
-            }
+            // TODO
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)

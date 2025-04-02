@@ -5,45 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGTS_WPF.UserWindows.MilestoneWindows"
         mc:Ignorable="d"
-        Style="{StaticResource MaterialDesignWindow}"
-        WindowStartupLocation="CenterScreen"
-        Title="Milestone Collection" Height="450" Width="800">
+        Title="MilestoneMainWindow" Height="450" Width="800">
     <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10" HorizontalAlignment="Left" Width="350" Background="#FAF3E0">
-                <TextBlock Text="Filtering Options" Width="250" Margin="0,0,0,10" FontSize="24"/>
-                <TextBox x:Name="txtSearch" Width="250" Height="30" Margin="0,0,0,10"/>
-                <DatePicker x:Name="dpDate" Width="250" Margin="0,0,0,10"/>
-                <Button Content="Search" Width="100" Height="30" Margin="0,0,0,10" Click="btnSearch_Click" Background="#FFDAB9"/>
-
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="250">
-                <Button Content="Create" Width="100" Height="30" Margin="0,0,15,0" Click="btnCreate_Click"/>
-                <Button Content="Chart" Width="100" Height="30" Margin="0,0,15,0" Click="btnChart_Click"/>
-            </StackPanel>
-
-            <DataGrid x:Name="MilestoneGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,10,0,0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                    <DataGridTextColumn Header="Description" Binding="{Binding Descriptions}" Width="100"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="100"/>
-                    <DataGridTemplateColumn Header="Actions" Width="200">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="Edit" Width="60" Margin="5,0,0,0" Click="btnEdit_Click" Tag="{Binding Id}"/>
-                                    <Button Content="Delete" Width="80" Margin="5,0,0,0" Click="btnDelete_Click" Tag="{Binding Id}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
+        
     </Grid>
 </Window>

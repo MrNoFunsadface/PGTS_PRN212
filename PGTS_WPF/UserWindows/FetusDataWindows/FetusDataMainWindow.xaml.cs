@@ -66,42 +66,30 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement CreateFetusDataWindow
-
-            /*
-            _windowManager.ShowDialog<CreateFetusDataWindow>();
+            _windowManager.ShowDialog<CreatePregnancyWindow>();
             btnSearch_Click(sender, e);
-            */
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement EditFetusDataWindow
-
-            /*
             var button = sender as Button;
             if (button != null)
             {
                 var pregnancyId = button.Tag;
-                _windowManager.ShowDialog<EditFetusDataWindow>(pregnancyId);
+                _windowManager.ShowDialog<EditPregnancyWindow>(pregnancyId);
                 btnSearch_Click(sender, e);
             }
-            */
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement DeleteFetusDataWindow
-
-            /*
             var button = sender as Button;
             if (button != null)
             {
                 var pregnancyId = button.Tag;
-                _windowManager.ShowDialog<DeleteFetusDataWindow>(pregnancyId);
+                _windowManager.ShowDialog<DeletePregnancyWindow>(pregnancyId);
                 btnSearch_Click(sender, e);
             }
-            */
         }
 
         private void btnChart_Click(object sender, RoutedEventArgs e)
