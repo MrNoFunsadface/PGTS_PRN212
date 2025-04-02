@@ -63,7 +63,7 @@ namespace PGTS_WPF.AuthenticationWindows
             if (response.Success)
             {
                 MessageBox.Show(response.Message, "Registration Successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                Close();
             }
             else
             {

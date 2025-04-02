@@ -25,16 +25,14 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
     public partial class FetusDataMainWindow : Window
     {
         private readonly int _pregnancyId;
-        private readonly IPregnancyService _pregnancyService;
         private readonly IFetusDataService _fetusDataService;
         private readonly IWindowManager _windowManager;
         private List<FetusDataResponseDTO> _fetusList;
 
-        public FetusDataMainWindow(int pregnancyId, IPregnancyService pregnancyService, IFetusDataService fetusDataService, IWindowManager windowManager)
+        public FetusDataMainWindow(int pregnancyId, IFetusDataService fetusDataService, IWindowManager windowManager)
         {
             InitializeComponent();
             _pregnancyId = pregnancyId;
-            _pregnancyService = pregnancyService;
             _fetusDataService = fetusDataService;
             _windowManager = windowManager;
             LoadFetusData();
@@ -66,7 +64,7 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            _windowManager.ShowDialog<CreatePregnancyWindow>();
+            _windowManager.ShowDialog<CreateFetusDataWindow>(_pregnancyId);
             btnSearch_Click(sender, e);
         }
 

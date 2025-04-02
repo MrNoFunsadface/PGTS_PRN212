@@ -3,6 +3,7 @@ using BLL.DTOs;
 using BLL.Services.Interfaces;
 using DAL.Entities;
 using DAL.Repo;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +29,20 @@ namespace BLL.Services.Implementations
         {
             var fetus = _mapper.Map<FetusData>(fetusDataRequestDTO);
 
+            var valid = checkValidDate(fetus.Date);
+            if (!valid.Success)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = valid.Message
+                };
+            }
+
             var pregnancy = _pregnancyRepo.GetSingle(p => p.Id == fetus.PregnancyId);
             if (pregnancy == null)
             {
-                return new ResponseDTO<FetusDataResponseDTO>
+                return new ResponseDTO
                 {
                     Success = false,
                     Message = $"Pregnancy not found."
@@ -41,26 +52,43 @@ namespace BLL.Services.Implementations
             var result = _fetusDataRepo.Create(fetus);
             if (!result)
             {
-                return new ResponseDTO<FetusDataResponseDTO>
+                return new ResponseDTO
                 {
                     Success = false,
                     Message = "Add failed."
                 };
             }
 
-            return new ResponseDTO<FetusDataResponseDTO>
+            return new ResponseDTO
             {
                 Success = true,
                 Message = "Fetus data added.",
-                Data = new FetusDataResponseDTO
+            };
+        }
+
+        private ResponseDTO checkValidDate(DateOnly date)
+        {
+            if (date.ToString().IsNullOrEmpty())
+            {
+                return new ResponseDTO
                 {
-                    Id = fetus.Id,
-                    PregnancyId = fetus.PregnancyId,
-                    Weight = fetus.Weight,
-                    Height = fetus.Height,
-                    HeadCircumference = fetus.HeadCircumference,
-                    Date = fetus.Date
-                }
+                    Success = false,
+                    Message = "Date cannot be empty"
+                };
+            }
+
+            if (date > DateOnly.FromDateTime(DateTime.Now))
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Date cannot be in the future"
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true
             };
         }
 
