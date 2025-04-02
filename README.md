@@ -37,6 +37,7 @@ The application leverages the following third-party libraries:
 
 - .NET 8 SDK
 - Visual Studio 2022 or later
+- MSSQL 2022 or later
 
 ### Installation
 
