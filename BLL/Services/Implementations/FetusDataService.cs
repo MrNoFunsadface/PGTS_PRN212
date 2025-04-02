@@ -189,7 +189,7 @@ namespace BLL.Services.Implementations
             var fetus = _fetusDataRepo.GetSingle(f => f.Id == id);
             if (fetus == null)
             {
-                return new ResponseDTO<PregnancyResponseDTO>
+                return new ResponseDTO
                 {
                     Success = false,
                     Message = "Fetus data not found."
