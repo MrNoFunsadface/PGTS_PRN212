@@ -87,9 +87,9 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search)
+        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search, bool active)
         {
-            var users = _userRepo.Get().AsEnumerable();
+            var users = _userRepo.Get(u => u.isActive == active).AsEnumerable();
             if (!string.IsNullOrEmpty(search))
             {
                 int userId;

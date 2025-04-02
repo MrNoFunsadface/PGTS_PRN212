@@ -1,4 +1,5 @@
 ﻿using BLL.Services.Interfaces;
+using PGTS_WPF.AdminWindows.UserRequestsWindows;
 using PGTS_WPF.AdminWindows.UsersManagementWindows;
 using PGTS_WPF.AuthenticationWindows;
 using PGTS_WPF.Helper;
@@ -43,7 +44,7 @@ namespace PGTS_WPF.AdminWindows
 
         private void btnRequests_Click(object sender, RoutedEventArgs e)
         {
-            // TODO
+            _windowManager.ShowWindow<UserRequestsMainWindow>();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

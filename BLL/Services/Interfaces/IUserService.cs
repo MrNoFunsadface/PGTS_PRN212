@@ -7,7 +7,7 @@ namespace BLL.Services.Interfaces
         public ResponseDTO Register(UserRequestDTO userRequestDTO);
         public ResponseDTO<UserResponseDTO> Login(UserLoginDTO userLoginDTO);
         public ResponseDTO<UserResponseDTO> GetById(int id);
-        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search);
+        public ResponseDTO<IEnumerable<UserResponseDTO>> GetAll(string search, bool active);
         public ResponseDTO ForgotPassword(string email, UserResetPasswordDTO userResetPasswordDTO);
         public ResponseDTO ChangePassword(int id, UserResetPasswordDTO userResetPasswordDTO);
         public ResponseDTO UpdateProfile(int id, UserProfileDTO userProfileDTO);
