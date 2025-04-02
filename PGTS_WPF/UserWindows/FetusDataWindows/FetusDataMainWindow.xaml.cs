@@ -73,8 +73,8 @@ namespace PGTS_WPF.UserWindows.FetusDataWindows
             var button = sender as Button;
             if (button != null)
             {
-                var pregnancyId = button.Tag;
-                _windowManager.ShowDialog<EditPregnancyWindow>(pregnancyId);
+                var fetusId = button.Tag;
+                _windowManager.ShowDialog<EditFetusDataWindow>(fetusId);
                 btnSearch_Click(sender, e);
             }
         }

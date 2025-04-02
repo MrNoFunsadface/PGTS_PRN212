@@ -163,9 +163,65 @@ namespace BLL.Services.Implementations
             };
         }
 
+        public ResponseDTO<FetusDataResponseDTO> GetById(int id)
+        {
+            var fetus = _fetusDataRepo.GetSingle(f => f.Id == id);
+            if (fetus == null)
+            {
+                return new ResponseDTO<FetusDataResponseDTO>
+                {
+                    Success = false,
+                    Message = "Fetus data not found."
+                };
+            }
+
+            var fetusResponse = _mapper.Map<FetusDataResponseDTO>(fetus);
+            return new ResponseDTO<FetusDataResponseDTO>
+            {
+                Success = true,
+                Message = "Fetus data found.",
+                Data = fetusResponse
+            };
+        }
+
         public ResponseDTO Update(int id, FetusDataRequestDTO fetusDataRequestDTO)
         {
-            throw new NotImplementedException();
+            var fetus = _fetusDataRepo.GetSingle(f => f.Id == id);
+            if (fetus == null)
+            {
+                return new ResponseDTO<PregnancyResponseDTO>
+                {
+                    Success = false,
+                    Message = "Fetus data not found."
+                };
+            }
+
+
+            var update = _mapper.Map(fetusDataRequestDTO, fetus);
+            var valid = checkValidDate(fetus.Date);
+            if (!valid.Success)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = valid.Message
+                };
+            }
+            var result = _fetusDataRepo.Update(update);
+            if (!result)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Update failed."
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Fetus data updated."
+            };
         }
     }
 }
