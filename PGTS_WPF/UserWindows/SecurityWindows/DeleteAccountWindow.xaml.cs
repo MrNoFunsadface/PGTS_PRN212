@@ -33,7 +33,7 @@ namespace PGTS_WPF.UserWindows.SecurityWindows
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
-            var response = _userService.Delete(_userSession.UserResponse.Id, false);
+            var response = _userService.Delete(_userSession.UserResponse.Id);
             if (response.Success)
             {
 

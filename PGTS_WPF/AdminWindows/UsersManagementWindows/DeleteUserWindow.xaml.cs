@@ -32,7 +32,7 @@ namespace PGTS_WPF.AdminWindows.UsersManagementWindows
 
         private void btnYes_Click(object sender, RoutedEventArgs e)
         {
-            var response = _userService.Delete(_userId, false);
+            var response = _userService.Delete(_userId);
             if (response.Success)
             {
 

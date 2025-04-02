@@ -255,7 +255,7 @@ namespace BLL.Services.Implementations
             };
         }
 
-        public ResponseDTO Delete(int id, bool softDelete)
+        public ResponseDTO Delete(int id)
         {
             var user = _userRepo.GetSingle(u => u.Id == id);
 
@@ -265,26 +265,6 @@ namespace BLL.Services.Implementations
                 {
                     Success = false,
                     Message = $"User with ID:{id} not found"
-                };
-            }
-
-            if (softDelete)
-            {
-                user.isActive = false;
-                var update = _userRepo.Update(user);
-                if (!update)
-                {
-                    return new ResponseDTO
-                    {
-                        Success = false,
-                        Message = "Delete failed."
-                    };
-                }
-
-                return new ResponseDTO
-                {
-                    Success = true,
-                    Message = "Delete successful."
                 };
             }
 
