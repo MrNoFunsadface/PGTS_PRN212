@@ -24,13 +24,13 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="180"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
                 <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="125"/>
-                <DataGridTemplateColumn Header="Tools" Width="280">
+                <DataGridTemplateColumn Header="Tools" Width="230">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Activate" Width="80" Margin="5,0,0,0" Click="btnActivate_Click" Tag="{Binding Id}"/>
+                                <Button Content="Activate" Width="90" Margin="5,0,0,0" Click="btnActivate_Click" Tag="{Binding Id}"/>
                                 <Button Content="Delete" Width="80" Margin="5,0,0,0" Click="btnDelete_Click" Tag="{Binding Id}"/>
                             </StackPanel>
                         </DataTemplate>
