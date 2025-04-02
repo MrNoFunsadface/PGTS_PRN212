@@ -94,7 +94,32 @@ namespace BLL.Services.Implementations
 
         public ResponseDTO Delete(int id)
         {
-            throw new NotImplementedException();
+            var fetus = _fetusDataRepo.GetSingle(f => f.Id == id);
+
+            if (fetus == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = $"Fetus data with ID:{id} not found"
+                };
+            }
+
+            var result = _fetusDataRepo.Delete(fetus);
+            if (!result)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Delete failed."
+                };
+            }
+
+            return new ResponseDTO
+            {
+                Success = true,
+                Message = "Fetus data deleted."
+            };
         }
 
         public ResponseDTO<IEnumerable<FetusDataResponseDTO>> GetByPregnancyId(int pregnancyId, string? search, DateOnly? from, DateOnly? to)
